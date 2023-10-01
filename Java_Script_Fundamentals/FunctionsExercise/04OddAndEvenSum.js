@@ -15,4 +15,4 @@ function oddAndEvenSum (input) {
 }
 
 oddAndEvenSum (1000435);
-oddAndEvenSum (3495892137259234);
+//oddAndEvenSum (3495892137259234);
