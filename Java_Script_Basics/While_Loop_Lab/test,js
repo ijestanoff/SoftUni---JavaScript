@@ -1,0 +1,9 @@
+function test(input) {
+    let cnt=0;
+    while(cnt<10) {
+        console.log("*".repeat(10));
+        cnt++
+    }
+}
+
+test();

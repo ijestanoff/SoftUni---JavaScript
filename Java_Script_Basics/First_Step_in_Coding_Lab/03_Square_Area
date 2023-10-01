@@ -1,0 +1,7 @@
+function square(input) {
+    let sideA = Number(input[0]);
+    let squareArea = sideA * sideA
+    console.log(squareArea);
+}
+
+// square(["5"]);

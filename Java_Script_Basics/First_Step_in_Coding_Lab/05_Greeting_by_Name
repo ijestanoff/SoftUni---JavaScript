@@ -1,0 +1,5 @@
+function Greeting(input){
+    console.log(`Hello, ${input[0]}!`)
+}
+
+// Greeting(["Niki"])
