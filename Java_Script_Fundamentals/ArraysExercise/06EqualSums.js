@@ -3,10 +3,10 @@ function equalSums (array) {
     for (index = 0; index< maxNumber; index++) {
         let leftSum = 0;
         let rightSum = 0;
-        for (left = 0; left<index; left++){
+        for (let left = 0; left<index; left++){
             leftSum += array[left];
         }
-        for (right = maxNumber - 1; right > index; right--) {
+        for (let right = maxNumber - 1; right > index; right--) {
             rightSum += array[right];
         }
         if (leftSum == rightSum) {
