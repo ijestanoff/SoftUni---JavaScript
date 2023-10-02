@@ -13,7 +13,6 @@ function hardWord (array) {
                 letter[index] = word + symbol;
             }
         }
-        
     }
     console.log(letter.join(' '));
 }
