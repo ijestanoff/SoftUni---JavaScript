@@ -1,8 +1,8 @@
 function legendaryFarming (input) {
     let farming = {};
     let legendary = {shards : 0, fragments : 0, motes: 0};
-    let find_artefact = false;
-    while (true) {
+    //let findArtefact = false;
+    //while (true) {
         let materials = input.split(' ');
         for (let index=0; index<materials.length; index+=2) {
             let quantity = Number(materials[index]);
@@ -17,31 +17,33 @@ function legendaryFarming (input) {
                 if (legendary['shards'] >=250) {
                     console.log("Shadowmourne obtained!");
                     legendary['shards'] -= 250;
-                    find_artefact = true;
+                    //findArtefact = true;
+                    break;
                 } else if (legendary['fragments'] >=250) {
                     console.log("Valanyr obtained!")
                     legendary['fragments'] -= 250;
-                    find_artefact = true;
+                    //findArtefact = true;
+                    break;
                 } else if (legendary['motes'] >=250) {
                     console.log("Dragonwrath obtained!")
                     legendary['motes'] -= 250;
-                    find_artefact = true;
+                    //findArtefact = true;
+                    break;
                 }
-                if (find_artefact) break;
+                //if (findArtefact) break;
             }
         }
-        if (find_artefact) break;
-    }
+        //if (findArtefact) break;
+    //}
     
     let totalSortByValueKey = Object.entries(legendary).sort((a, b) => {
-        // First, sort by values in descending order
-        if (b[1] - a[1] !== 0) {
+        if (b[1] - a[1] !== 0) { // First, sort by values in descending order
             return b[1] - a[1];
         }
-        // If values are equal, sort by keys in ascending order
-        return a[0].localeCompare(b[0]);
+        return a[0].localeCompare(b[0]); // If values are equal, sort by keys in ascending order
     });
     legendary = Object.fromEntries(totalSortByValueKey);
+
     for (let [material, quantity] of Object.entries(legendary)){
         console.log(`${material}: ${quantity}`);
     }
@@ -51,9 +53,7 @@ function legendaryFarming (input) {
     farming = Object.fromEntries(keyValueArray);
 
     for (let [material, quantity] of Object.entries(farming)){
-        if (material != "shards" && material != "fragments" && material != "motes") {
-            console.log(`${material}: ${quantity}`);
-        }
+        console.log(`${material}: ${quantity}`);
     }
 }
 
