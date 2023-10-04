@@ -16,6 +16,7 @@ function travelTime (input) {
             }
         }
     }
+    
     let sortByKey = Object.entries(countries);
     sortByKey.sort((a, b) => a[0].localeCompare(b[0]));
     countries = Object.fromEntries(sortByKey);
