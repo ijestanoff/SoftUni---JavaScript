@@ -70,9 +70,7 @@ function arenaTier (input) {
         for (let technique in fighters[gladiator]) {
             console.log(`- ${technique} <!> ${fighters[gladiator][technique]}`);
         }
-
     }
-
 }
 
 // arenaTier ([
