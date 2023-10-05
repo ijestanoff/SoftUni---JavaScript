@@ -1,40 +1,32 @@
 function legendaryFarming (input) {
     let farming = {};
     let legendary = {shards : 0, fragments : 0, motes: 0};
-    //let findArtefact = false;
-    //while (true) {
-        let materials = input.split(' ');
-        for (let index=0; index<materials.length; index+=2) {
-            let quantity = Number(materials[index]);
-            let material = materials[index+1].toLowerCase();
-            if (material != 'shards' && material != 'fragments' && material != 'motes') {
-                if (!farming.hasOwnProperty(material)) {
-                    farming[material] = 0;
-                }
-                farming[material] +=quantity;
-            } else {
-                legendary[material] +=quantity;
-                if (legendary['shards'] >=250) {
-                    console.log("Shadowmourne obtained!");
-                    legendary['shards'] -= 250;
-                    //findArtefact = true;
-                    break;
-                } else if (legendary['fragments'] >=250) {
-                    console.log("Valanyr obtained!")
-                    legendary['fragments'] -= 250;
-                    //findArtefact = true;
-                    break;
-                } else if (legendary['motes'] >=250) {
-                    console.log("Dragonwrath obtained!")
-                    legendary['motes'] -= 250;
-                    //findArtefact = true;
-                    break;
-                }
-                //if (findArtefact) break;
+    let materials = input.split(' ');
+    for (let index=0; index<materials.length; index+=2) {
+        let quantity = Number(materials[index]);
+        let material = materials[index+1].toLowerCase();
+        if (material != 'shards' && material != 'fragments' && material != 'motes') {
+            if (!farming.hasOwnProperty(material)) {
+                farming[material] = 0;
+            }
+            farming[material] +=quantity;
+        } else {
+            legendary[material] +=quantity;
+            if (legendary['shards'] >=250) {
+                console.log("Shadowmourne obtained!");
+                legendary['shards'] -= 250;
+                break;
+            } else if (legendary['fragments'] >=250) {
+                console.log("Valanyr obtained!")
+                legendary['fragments'] -= 250;
+                break;
+            } else if (legendary['motes'] >=250) {
+                console.log("Dragonwrath obtained!")
+                legendary['motes'] -= 250;
+                break;
             }
         }
-        //if (findArtefact) break;
-    //}
+    }
     
     let totalSortByValueKey = Object.entries(legendary).sort((a, b) => {
         if (b[1] - a[1] !== 0) { // First, sort by values in descending order

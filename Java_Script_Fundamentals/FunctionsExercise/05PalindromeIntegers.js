@@ -1,5 +1,5 @@
 function palindromeIntegers (input) {
-    function palin (number) {
+    function palindrome (number) {
         let isPalindrome = false;
         let numString = String(number);
         let palindromeString = '';
@@ -10,8 +10,8 @@ function palindromeIntegers (input) {
         return isPalindrome;
     }
 
-    for (let index=0; index<input.length;index++) {
-        console.log(palin(input[index]));
+    for (let part of input) {
+        console.log(palindrome(part));
     }
 }
 

@@ -1,20 +1,20 @@
-function charactersInRange (a,b) {
-    function range(x,y) {
+function charactersInRange(a, b) {
+    function range(x, y) {
         let charString = '';
         let startIndex = x.charCodeAt(0);
         let endIndex = y.charCodeAt(0);
         if (startIndex > endIndex) {
             [startIndex, endIndex] = [endIndex, startIndex];
         }
-        for (i=startIndex+1; i<endIndex; i++) {
+        for (i = startIndex + 1; i < endIndex; i++) {
             let symbol = String.fromCharCode(i);
             charString += symbol + ' ';
         }
-        console.log(charString);
+        return charString;
     }
-    range(a,b);
+    console.log(range(a, b));
 }
 
-charactersInRange ('a','d');
-charactersInRange ('#',':');
-charactersInRange ('C','#');
+charactersInRange('a', 'd');
+charactersInRange('#', ':');
+charactersInRange('C', '#');

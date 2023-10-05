@@ -9,10 +9,9 @@ function oddAndEvenSum (input) {
         }
         return [sumOdd, sumEven];
     }
-
     const result = oddEven(input);
     console.log(`Odd sum = ${result[0]}, Even sum = ${result[1]}`);
 }
 
 oddAndEvenSum (1000435);
-//oddAndEvenSum (3495892137259234);
+oddAndEvenSum (3495892137259234);
