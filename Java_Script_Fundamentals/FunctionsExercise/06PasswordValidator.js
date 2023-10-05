@@ -30,5 +30,7 @@ function passwordValidator (input) {
 }
 
 passwordValidator ('qlogIn2');
-//passwordValidator ('MyPass123');
-//passwordValidator ('Pa$s$s');
+console.log('-----');
+passwordValidator ('MyPass123');
+console.log('-----');
+passwordValidator ('Pa$s$s');
