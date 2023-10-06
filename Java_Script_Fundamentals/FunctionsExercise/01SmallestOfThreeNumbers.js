@@ -1,5 +1,5 @@
 function smalestNumbers(a, b, c) {
-    let smalest = (x, y, z) => { return Math.min(x, y, z) }
+    let smalest = (x, y, z) => Math.min(x, y, z)
     console.log(smalest(a, b, c));
 }
 
