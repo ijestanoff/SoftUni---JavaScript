@@ -1,9 +1,5 @@
-function sortAnArrayBy2Criteria(array) {
-    const sortByTwo = (first, next) =>
-        first.length - next.length || first.localeCompare(next);
-    array.sort(sortByTwo);
-    console.log(array.join('\n'));
-}
+solve = array => console.log(array.sort((a, b) => a.length - b.length || a.localeCompare(b)).join('\n'))
 
-//sortAnArrayBy2Criteria (['alpha', 'beta', 'gamma']);
-sortAnArrayBy2Criteria (['Isacc', 'Theodor', 'Jack', 'Harrison', 'George']);
+solve (['alpha', 'beta', 'gamma']);
+console.log('=========');
+solve (['Isacc', 'Theodor', 'Jack', 'Harrison', 'George']);
