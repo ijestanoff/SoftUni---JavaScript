@@ -5,33 +5,28 @@ function rosettaStone(input) {
         return String.fromCharCode(num);
     }
 
-    let tempHigh = Number(input[0]);
+    let templateHigh = Number(input[0]);
     let template = [];
     let matrix = [];
-    for (let i = 1; i <= tempHigh; i++) {
+    for (let i = 1; i <= templateHigh; i++) {
         template[i - 1] = input[i].split(' ').map(num => Number(num));
     }
-    let tempWidth = template[0].length;
-    for (let i = tempHigh + 1; i < input.length; i++) {
-        matrix[i - tempHigh - 1] = input[i].split(' ').map(num => Number(num));
+    let templateWidth = template[0].length;
+    for (let i = templateHigh + 1; i < input.length; i++) {
+        matrix[i - templateHigh - 1] = input[i].split(' ').map(num => Number(num));
     }
-    let matHigh = matrix.length;
-    let matWidth = matrix[0].length;
-    if (tempHigh > matHigh) tempHigh = matHigh;
-    if (tempWidth > matWidth) tempWidth = matWidth;
-    let tempV = 0;
+    let templateVer = 0;
     let result = '';
-    for (let i = 0; i < matWidth; i++) {
-        let tempH = 0;
-        for (let j = 0; j < matHigh; j++) {
-            matrix[i][j] += template[tempV][tempH];
+    for (let i = 0; i < matrix.length; i++) {
+        let templateHor = 0;
+        for (let j = 0; j < matrix[0].length; j++) {
+            matrix[i][j] += template[templateVer][templateHor];
             result += symbol(matrix[i][j]);
-            if ((++tempH) == tempWidth) tempH = 0;  
+            if (++templateHor == templateWidth) templateHor = 0;  
         }
-        if ((++tempV) == tempHigh) tempV = 0;
+        if (++templateVer == templateHigh) templateVer = 0;
     }
     console.log(result);
-    console.log(symbol(0));
 }
 
 rosettaStone(['2',
