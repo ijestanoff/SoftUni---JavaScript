@@ -1,20 +1,8 @@
 function netherRealms(input) {
     let demons = {};
     let regex = /[\+-]*\d+[.\d+]*/g;
-    //let regexExclude = //g';
-    let parts = input.split(', ');
+    let parts = input.split(/[, ]+/g);
     for (let demon of parts) {
-        while (demon[0] == ' ' || demon[0] == ',') { //remove front spaces and commas
-            demon = demon.slice(1);
-        }
-        while (demon[demon.length - 1] == ' ' || demon[demon.length - 1] == ',') { //remove front spaces
-            demon = demon.slice(0,-1);
-        }
-        if (demon.includes(',')) {
-            let j = demon.indexOf(',')
-            demon = demon.slice(j+1);
-            //continue;
-        }
         let health = 0;
         for (let s of demon) {
             if ((s < '0' || s > '9') && s != '+' && s != '-' && s != '*' && s != '/' && s != '.') {
@@ -43,6 +31,6 @@ function netherRealms(input) {
     }
 }
 
-//netherRealms ('M3ph-0.5s-0.5t0.0**');
-netherRealms('M3ph,1st0**, Azazel');
-// netherRealms ('Gos/ho');
+netherRealms ('M3ph-0.5s-0.5t0.0**');
+netherRealms('M3ph1st0**, Azazel');
+netherRealms ('Gos/ho');
