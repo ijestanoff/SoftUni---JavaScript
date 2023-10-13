@@ -20,6 +20,6 @@ function bildAWall (teams) {
     console.log(`${pesos} pesos`);
 }
 
-//bildAWall ([21, 25, 28]);
-// bildAWall ([17]);
- bildAWall ([17, 22, 17, 19, 17]);
+bildAWall ([21, 25, 28]);
+bildAWall ([17]);
+bildAWall ([17, 22, 17, 19, 17]);

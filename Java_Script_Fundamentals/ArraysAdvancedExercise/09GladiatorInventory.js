@@ -36,4 +36,4 @@ function gladiatorInventory (input) {
 }
 
 gladiatorInventory (['SWORD Shield Spear','Buy Bag','Trash Shield','Repair Spear','Upgrade SWORD-Steel']);
-//gladiatorInventory (['SWORD Shield Spear','Trash Bow','Repair Shield','Upgrade Helmet-V']);
+gladiatorInventory (['SWORD Shield Spear','Trash Bow','Repair Shield','Upgrade Helmet-V']);

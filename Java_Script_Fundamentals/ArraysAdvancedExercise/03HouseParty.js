@@ -1,7 +1,7 @@
-function houseParty (input) {
+function houseParty(input) {
     let array = [];
-    for (let index = 0; index < input.length; index++) {
-        let command = input[index].split(' ');
+    for (let part of input) {
+        let command = part.split(' ');
         let guest = command[0];
         if (command[2] == 'going!') {
             if (array.includes(guest)) {
@@ -11,9 +11,9 @@ function houseParty (input) {
             }
         } else {
             if (array.includes(guest)) {
-                for (cnt = 0; cnt < array.length; cnt++){
+                for (cnt = 0; cnt < array.length; cnt++) {
                     if (array[cnt] == guest) {
-                        array.splice(cnt,1);
+                        array.splice(cnt, 1);
                     }
                 }
             } else {
@@ -21,11 +21,9 @@ function houseParty (input) {
             }
         }
     }
-    for (index = 0; index< array.length; index++){
-        console.log(array[index]);
-    }
+    console.log(array.join('\n'));
 }
 
 //houseParty (['Allie is going!', 'George is going!', 'John is not going!','George is not going!']);
-houseParty (['Tom is going!', 'Annie is going!','Tom is going!','Garry is going!','Jerry is going!']);
+houseParty(['Tom is going!', 'Annie is going!', 'Tom is going!', 'Garry is going!', 'Jerry is going!']);
 

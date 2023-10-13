@@ -1,6 +1,6 @@
 function extractEmails(input) {
     //let regex = /\b[\w]+[.\_-]?[\w]*@[\w]+[.-]?[\w]*[.-]?[\w]*[.-]?[\w]+[.][\w]+\b/g;
-    let regex = /(^|(?<=\s))([\w]+[\.\-_]?[\w]+@([A-Za-z]+([\-_]?[A-Za-z]+(\.[A-Za-z]+)+)+))(\b|(?=\s))/g;
+    let regex = /(^|\s)([\w]+[\.\-_]?[\w]+@([A-Za-z]+([\-_]?[A-Za-z]+(\.[A-Za-z]+)+)+))(\b|(?=\s))/g;
     let match = input.matchAll(regex);
     for (const curMatch of match) {
         let email = curMatch[0];
