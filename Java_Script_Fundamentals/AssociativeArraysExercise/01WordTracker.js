@@ -12,6 +12,7 @@ function wordTracker (array) {
     const keyValueArr = Object.entries(occurrences);
     keyValueArr.sort((a,b) => b[1] - a[1]);
     const occurrences2 = Object.fromEntries(keyValueArr);
+    
     for (let [key,val] of Object.entries(occurrences2)) {
         console.log(`${key} - ${val}`);
     }

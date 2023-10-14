@@ -1,8 +1,8 @@
 function train(input) {
-    let wagons = input[0].split(' ').map(num => Number(num));
+    let wagons = input[0].split(' ').map(Number);
     let capacity = Number(input[1]);
     for (index = 2; index < input.length; index++) {
-        command = input[index].split(' ');
+        let command = input[index].split(' ');
         if (command[0] == 'Add') {
             wagons.push(Number(command[1]));
         } else {

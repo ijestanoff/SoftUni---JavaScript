@@ -24,6 +24,6 @@ function houseParty(input) {
     console.log(array.join('\n'));
 }
 
-//houseParty (['Allie is going!', 'George is going!', 'John is not going!','George is not going!']);
+houseParty (['Allie is going!', 'George is going!', 'John is not going!','George is not going!']);
 houseParty(['Tom is going!', 'Annie is going!', 'Tom is going!', 'Garry is going!', 'Jerry is going!']);
 
