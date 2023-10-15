@@ -1,12 +1,42 @@
 function softUniStudents (input) {
+    let coursesCapacity = {};
+    let coursesStudents = {};
+    for (let part of input) {
+        if (part.includes(': ')){
+            let command = part.split(': ');
+            let courseName = command[0];
+            let courseCount = Number(command[1]);
+            if (!coursesCapacity.hasOwnProperty(courseName)) {
+                coursesCapacity[courseName] = courseCount;
+                coursesStudents[courseName] = {};
+            }
+            else coursesCapacity[courseName] += courseCount;
+        } else {
+            let command = part.split(' ');
+            let inx = command[0].indexOf('[');
+            let username = command[0].slice(0,inx);
+            let credit = command[0].slice(inx+1,command[0].length - 1);
+            let email = command[3];
+            let courseName = command[5];
+            if (coursesStudents.hasOwnProperty(courseName)) {
+                if (Object.keys(coursesStudents[courseName]).length < coursesCapacity[courseName]) {
+                    coursesStudents[courseName][username] = {};
+                    coursesStudents[courseName][username]['credit'] = credit;
+                    coursesStudents[courseName][username]['email'] = email;
+                    coursesStudents[courseName][username]['count'] = count;
+                }
+            }
 
+        }
+    }
 }
 
 softUniStudents ([
 'JavaBasics: 2', 
 'user1[25] with email user1@user.com joins C#Basics', 
-'C#Advanced: 3', 'JSCore: 4', 
-'user2[30] with emailuser2@user.com joins C#Basics', 
+'C#Advanced: 3', 
+'JSCore: 4', 
+'user2[30] with email user2@user.com joins C#Basics', 
 'user13[50] with email user13@user.com joins JSCore', 
 'user1[25] with email user1@user.com joins JSCore', 
 'user8[18] with email user8@user.com joins C#Advanced', 
