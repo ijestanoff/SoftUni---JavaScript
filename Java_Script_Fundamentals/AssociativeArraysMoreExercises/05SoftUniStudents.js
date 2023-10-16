@@ -21,10 +21,13 @@ function softUniStudents(input) {
             let courseName = command[5];
             if (coursesStudents.hasOwnProperty(courseName)) {
                 let currFullness = Object.keys(coursesStudents[courseName]).length;
-                if (currFullness < coursesCapacity[courseName]) {
-                    coursesStudents[courseName][username] = {};
-                    coursesStudents[courseName][username]['credit'] = credit;
-                    coursesStudents[courseName][username]['email'] = email;
+                let capacity = Number(coursesCapacity[courseName]);
+                if (currFullness < capacity) {
+                    if (!coursesStudents[courseName].hasOwnProperty(username)) {
+                        coursesStudents[courseName][username] = {};
+                        coursesStudents[courseName][username]['credit'] = credit;
+                        coursesStudents[courseName][username]['email'] = email;
+                    }
                 }
             }
         }
