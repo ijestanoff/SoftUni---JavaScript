@@ -1,9 +1,7 @@
 function manOWar (input) {
     let islost = false;
-    let pirateShip = input[0].split('>');
-    for (let i=0; i<pirateShip.length; i++) pirateShip[i] = Number(pirateShip[i]);
-    let warship = input[1].split('>');
-    for (let i=0; i<warship.length; i++) warship[i] = Number(warship[i]);
+    let pirateShip = input[0].split('>').map(Number);
+    let warship = input[1].split('>').map(Number);
     let maxHealt = Number(input[2]);
     for (let index=3; index<input.length; index++) {
         let commands = input[index].split(' ');
