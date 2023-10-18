@@ -1,8 +1,5 @@
 function computerStore (input) {
-    let totalPrice = 0;
-    let totalWithTaxes = 0;
-    let taxes = 0;
-    let price;
+    let [totalPrice, totalWithTaxes, taxes, price]  = [0, 0, 0, ''];
     for (price of input) {
         if (price == 'special' || price == 'regular') break;
         if (Number(price) < 0) console.log("Invalid price!");
@@ -21,15 +18,15 @@ function computerStore (input) {
     }
 }
 
-// computerStore ([
-//     '1050',
-//     '200',
-//     '450',
-//     '2',
-//     '18.50',
-//     '16.86',
-//     'special'
-//     ]);
+computerStore ([
+    '1050',
+    '200',
+    '450',
+    '2',
+    '18.50',
+    '16.86',
+    'special'
+    ]);
 
 // computerStore ([
 //     '1023', 
@@ -42,9 +39,9 @@ function computerStore (input) {
 //     '19.30', 'regular'
 //     ]);
 
-computerStore ([
-    'regular'
-    ]);
+// computerStore ([
+//     'regular'
+//     ]);
     
     
     
