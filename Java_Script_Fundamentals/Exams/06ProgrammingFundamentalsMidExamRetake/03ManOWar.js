@@ -1,10 +1,10 @@
 function manOWar (input) {
     let islost = false;
-    let pirateShip = input[0].split('>').map(Number);
-    let warship = input[1].split('>').map(Number);
-    let maxHealt = Number(input[2]);
-    for (let index=3; index<input.length; index++) {
-        let commands = input[index].split(' ');
+    let pirateShip = input.shift().split('>').map(Number);
+    let warship = input.shift().split('>').map(Number);
+    let maxHealt = Number(input.shift());
+    for (let part of input) {
+        let commands = part.split(' ');
         let command = commands[0];
         if (command == 'Retire') break;
         if (command == 'Fire') {

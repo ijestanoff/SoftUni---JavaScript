@@ -1,9 +1,8 @@
 function theLift (input) {
-    let people = Number(input[0]);
     let train = [];
-    let wagons = input[1].split(' ');
-    for (let index = 0; index< wagons.length; index++) {
-        let current = Number(wagons[index]);
+    let people = Number(input[0]);
+    let wagons = input[1].split(' ').map(Number);
+    for (let current of wagons) {
         let free = 4 - current;
         if (people >= free) {
             people -= free;

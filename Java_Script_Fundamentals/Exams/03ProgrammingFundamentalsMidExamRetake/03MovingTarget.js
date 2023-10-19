@@ -1,4 +1,4 @@
-function movingTarget (input) {
+function movingTarget(input) {
     let targets = input.shift().split(' ').map(Number);
     for (let part of input) {
         let commands = part.split(' ');
@@ -7,15 +7,15 @@ function movingTarget (input) {
         let ind = Number(commands[1]);
         let value = Number(commands[2]);
         if (command == 'Shoot') {
-            if (ind >=0 && ind < targets.length) {
+            if (ind >= 0 && ind < targets.length) {
                 targets[ind] -= value;
                 if (targets[ind] <= 0) {
-                    targets.splice(ind,1);
+                    targets.splice(ind, 1);
                 }
             }
         } else if (command == 'Add') {
-            if (ind >=0 && ind < targets.length) {
-                targets.splice(ind,0,value);
+            if (ind >= 0 && ind < targets.length) {
+                targets.splice(ind, 0, value);
             } else {
                 console.log("Invalid placement!");
             }
@@ -25,20 +25,19 @@ function movingTarget (input) {
             } else {
                 console.log("Strike missed!");
             }
-
         }
     }
     console.log(targets.join('|'));
 }
 
-movingTarget (["52 74 23 44 96 110",
-"Shoot 5 10",
-"Shoot 1 80",
-"Strike 2 1",
-"Add 22 3",
-"End"])
-;
-movingTarget (["1 2 3 4 5",
-"Strike 0 1",
-"End"])
-;
+movingTarget(["52 74 23 44 96 110",
+    "Shoot 5 10",
+    "Shoot 1 80",
+    "Strike 2 1",
+    "Add 22 3",
+    "End"])
+    ;
+movingTarget(["1 2 3 4 5",
+    "Strike 0 1",
+    "End"])
+    ;

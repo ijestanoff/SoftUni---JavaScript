@@ -1,7 +1,7 @@
 function shoppingList (input) {
-    let shopList = input[0].split('!');
-    for (let index=1; index<input.length; index++) {
-        let commands = input[index].split(' ');
+    let shopList = input.shift().split('!');
+    for (let part of input) {
+        let commands = part.split(' ');
         if (commands[1] == 'Shopping!') break;
         let command = commands[0];
         let item = commands[1];
@@ -32,10 +32,10 @@ function shoppingList (input) {
     console.log(shopList.join(', '));
 }
 
-// shoppingList (["Tomatoes!Potatoes!Bread",
-// "Unnecessary Milk",
-// "Urgent Tomatoes",
-// "Go Shopping!"]);
+shoppingList (["Tomatoes!Potatoes!Bread",
+"Unnecessary Milk",
+"Urgent Tomatoes",
+"Go Shopping!"]);
 shoppingList (["Milk!Pepper!Salt!Water!Banana",
 "Urgent Salt",
 "Unnecessary Grapes",

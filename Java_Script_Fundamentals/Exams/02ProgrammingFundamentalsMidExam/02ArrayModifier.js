@@ -1,11 +1,7 @@
 function arrayModifier (input) {
-    let array = input[0].split(' ');
-    let numbers = [];
-    for (let num of array) {
-        numbers.push(Number(num));
-    }
-    for (let index = 1; index<input.length; index++) {
-        let commands = input[index].split(' ');
+    let numbers = input.shift().split(' ').map(Number);
+    for (let part of input) {
+        let commands = part.split(' ');
         let command = commands[0];
         if (command == 'end') break;
         if (command == 'decrease') {
