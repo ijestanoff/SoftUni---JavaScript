@@ -1,7 +1,7 @@
-function inventory (input) {
-    let items = input[0].split(', ');
-    for (let i = 1; i<input.length; i++ ){
-        let commands = input[i].split(' - ');
+function inventory(input) {
+    let items = input.shift().split(', ');
+    for (let part of input) {
+        let commands = part.split(' - ');
         if (commands[0] == 'Craft!') break;
         let command = commands[0];
         let item = commands[1];
@@ -12,7 +12,7 @@ function inventory (input) {
         } else if (command == 'Drop') {
             while (items.includes(item)) {
                 let ind = items.indexOf(item);
-                items.splice(ind,1);
+                items.splice(ind, 1);
             }
         } else if (command == 'Combine Items') {
             let oldNewItem = item.split(':');
@@ -20,12 +20,12 @@ function inventory (input) {
             let newItem = oldNewItem[1];
             if (items.includes(oldItem)) {
                 let ind = items.indexOf(oldItem);
-                items.splice(ind+1,0,newItem);
+                items.splice(ind + 1, 0, newItem);
             }
         } else if (command == 'Renew') {
             if (items.includes(item)) {
                 let ind = items.indexOf(item);
-                items.splice(ind,1);
+                items.splice(ind, 1);
                 items.push(item);
             }
         }
@@ -40,11 +40,11 @@ function inventory (input) {
 //     'Craft!'
 //   ]
 //   );
-  inventory ([
+inventory([
     'Iron, Sword',
     'Drop - Bronze',
     'Combine Items - Sword:Bow',
     'Renew - Iron',
     'Craft!'
-  ]
-  );
+]
+);
