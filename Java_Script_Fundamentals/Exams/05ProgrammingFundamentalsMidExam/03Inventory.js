@@ -33,13 +33,13 @@ function inventory(input) {
     console.log(items.join(', '));
 }
 
-// inventory ([
-//     'Iron, Wood, Sword', 
-//     'Collect - Gold', 
-//     'Drop - Wood', 
-//     'Craft!'
-//   ]
-//   );
+inventory ([
+    'Iron, Wood, Sword', 
+    'Collect - Gold', 
+    'Drop - Wood', 
+    'Craft!'
+  ]
+  );
 inventory([
     'Iron, Sword',
     'Drop - Bronze',

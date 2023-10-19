@@ -1,8 +1,7 @@
 function movingTarget (input) {
-    let targets = input[0].split(' ');
-    for (let i=0; i<targets.length; i++) targets[i] = Number(targets[i]);
-    for (let index=1; index<input.length; index++) {
-        let commands = input[index].split(' ');
+    let targets = input.shift().split(' ').map(Number);
+    for (let part of input) {
+        let commands = part.split(' ');
         if (commands[0] == 'End') break;
         let command = commands[0];
         let ind = Number(commands[1]);
@@ -39,7 +38,7 @@ movingTarget (["52 74 23 44 96 110",
 "Add 22 3",
 "End"])
 ;
-// movingTarget (["1 2 3 4 5",
-// "Strike 0 1",
-// "End"])
-// ;
+movingTarget (["1 2 3 4 5",
+"Strike 0 1",
+"End"])
+;
