@@ -5,35 +5,25 @@ function treasureHunt(input) {
         let command = commands.shift();
         if (command == 'Yohoho!') break;
         if (command == 'Loot') {
-            for (let comm of commands) {
-                if (!loot.includes(comm)) {
-                    loot.unshift(comm);
-                }
-            }
+            // for (let item of commands) {
+            //     if (!loot.includes(item)) {
+            //         loot.unshift(item);
+            //     }
+            // }
+            commands.forEach(x => { if (!loot.includes(x)) loot.unshift(x) });
         } else if (command == 'Drop') {
-            let ind = Number(commands[0]);
-            if (ind < loot.length && ind >= 0) {
-                let temp = loot[ind];
-                loot.splice(ind, 1);
-                loot.push(temp);
+            let index = Number(commands[0]);
+            if (index < loot.length && index >= 0) {
+                loot.push(loot.splice(index, 1));
             }
         } else if (command == 'Steal') {
-            let count = Number(commands[0]);
-            if (count > loot.length) count = loot.length;
-            let steal = [];
-            for (let i = loot.length - count; i < loot.length; i++) {
-                steal.push(loot[i]);
-            }
-            console.log(steal.join(', '));
-            loot.splice(loot.length - count, count);
+            console.log(loot.splice(-Number(commands[0])).join(', '));
         }
     }
     let averageGain = 0;
-    for (let l of loot) {
-        averageGain += l.length;
-    }
+    loot.forEach(x => averageGain += x.length);
     averageGain /= loot.length;
-    if (loot.length == 0) console.log("Failed treasure hunt.");
+    if (!loot.length) console.log("Failed treasure hunt.");
     else console.log(`Average treasure gain: ${averageGain.toFixed(2)} pirate credits.`);
 }
 
@@ -44,10 +34,10 @@ treasureHunt((["Gold|Silver|Bronze|Medallion|Cup",
     "Steal 3",
     "Yohoho!"])
 );
-// treasureHunt ((["Diamonds|Silver|Shotgun|Gold",
-// "Loot Silver Medals Coal",
-// "Drop -1",
-// "Drop 1",
-// "Steal 6",
-// "Yohoho!"])
-// );
+treasureHunt ((["Diamonds|Silver|Shotgun|Gold",
+"Loot Silver Medals Coal",
+"Drop -1",
+"Drop 1",
+"Steal 6",
+"Yohoho!"])
+);

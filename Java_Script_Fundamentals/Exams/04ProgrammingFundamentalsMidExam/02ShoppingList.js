@@ -1,4 +1,4 @@
-function shoppingList (input) {
+function shoppingList(input) {
     let shopList = input.shift().split('!');
     for (let part of input) {
         let commands = part.split(' ');
@@ -12,7 +12,7 @@ function shoppingList (input) {
         } else if (command == 'Unnecessary') {
             if (shopList.includes(item)) {
                 let i = shopList.indexOf(item);
-                shopList.splice(i,1);
+                shopList.splice(i, 1);
             }
         } else if (command == 'Correct') {
             let newItem = commands[2];
@@ -24,7 +24,7 @@ function shoppingList (input) {
             if (shopList.includes(item)) {
                 let i = shopList.indexOf(item);
                 let temp = shopList[i];
-                shopList.splice(i,1);
+                shopList.splice(i, 1);
                 shopList.push(temp);
             }
         }
@@ -32,14 +32,14 @@ function shoppingList (input) {
     console.log(shopList.join(', '));
 }
 
-shoppingList (["Tomatoes!Potatoes!Bread",
-"Unnecessary Milk",
-"Urgent Tomatoes",
-"Go Shopping!"]);
-shoppingList (["Milk!Pepper!Salt!Water!Banana",
-"Urgent Salt",
-"Unnecessary Grapes",
-"Correct Pepper Onion",
-"Rearrange Grapes",
-"Correct Tomatoes Potatoes",
-"Go Shopping!"]);
+shoppingList(["Tomatoes!Potatoes!Bread",
+    "Unnecessary Milk",
+    "Urgent Tomatoes",
+    "Go Shopping!"]);
+shoppingList(["Milk!Pepper!Salt!Water!Banana",
+    "Urgent Salt",
+    "Unnecessary Grapes",
+    "Correct Pepper Onion",
+    "Rearrange Grapes",
+    "Correct Tomatoes Potatoes",
+    "Go Shopping!"]);
