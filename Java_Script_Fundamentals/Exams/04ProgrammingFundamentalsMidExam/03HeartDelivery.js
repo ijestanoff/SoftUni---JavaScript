@@ -1,28 +1,24 @@
 function heartDelivery(input) {
-    let hous = input.shift().split('@').map(Number);
-    let currentIndex = 0;
+    let houses = input.shift().split('@').map(Number);
+    let [currentIndex, count] = [0, 0];
     for (let part of input) {
         let commands = part.split(' ');
-        let command = commands[0];
-        if (command == 'Love!') break;
+        if (commands[0] == 'Love!') break;
         let jump = Number(commands[1]);
-        if (jump + currentIndex < hous.length) currentIndex += jump;
-        else currentIndex = 0;
-        if (hous[currentIndex] > 2) {
-            hous[currentIndex] -= 2;
-        } else if (hous[currentIndex] == 2) {
-            hous[currentIndex] = 0;
-            console.log(`Place ${currentIndex} has Valentine's day.`);
-        } else if (hous[currentIndex] == 0) console.log(`Place ${currentIndex} already had Valentine's day.`);
+        currentIndex += jump;
+        if (currentIndex >= houses.length) currentIndex = 0;
+        houses[currentIndex] -= 2;
+        if (!houses[currentIndex]) console.log(`Place ${currentIndex} has Valentine's day.`);
+        else if (houses[currentIndex] < 0) {
+            console.log(`Place ${currentIndex} already had Valentine's day.`);
+            houses[currentIndex] = 0;
+        }
     }
     console.log(`Cupid's last position was ${currentIndex}.`);
-    let count = 0;
-    for (let i = 0; i < hous.length; i++) {
-        if (hous[i] > 0) count++;
-    }
-    if (count == 0) console.log("Mission was successful.");
+    houses.forEach(x => { if (x) count++ });
+    if (!count) console.log("Mission was successful.");
     else console.log(`Cupid has failed ${count} places.`);
-}
+} 
 
 heartDelivery(["10@10@10@2",
     "Jump 1",
