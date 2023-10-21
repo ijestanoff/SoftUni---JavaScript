@@ -3,17 +3,16 @@ function theLift (input) {
     let people = Number(input[0]);
     let wagons = input[1].split(' ').map(Number);
     for (let current of wagons) {
-        let free = 4 - current;
-        if (people >= free) {
-            people -= free;
+        if (people >= 4 - current) {
+            people -= 4 - current;
             train.push(4);
         } else {
             train.push(current + people);
             people = 0;
         } 
     }
-    if (people == 0 && train[train.length-1] < 4) console.log('The lift has empty spots!');
-    if (people>0) console.log(`There isn't enough space! ${people} people in a queue!`);
+    if (!people && train[train.length-1] < 4) console.log('The lift has empty spots!');
+    if (people) console.log(`There isn't enough space! ${people} people in a queue!`);
     console.log(train.join(' '));
 }
 

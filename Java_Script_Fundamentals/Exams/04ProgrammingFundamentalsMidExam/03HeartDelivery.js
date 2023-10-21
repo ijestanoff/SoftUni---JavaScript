@@ -4,8 +4,7 @@ function heartDelivery(input) {
     for (let part of input) {
         let commands = part.split(' ');
         if (commands[0] == 'Love!') break;
-        let jump = Number(commands[1]);
-        currentIndex += jump;
+        currentIndex += Number(commands[1]); //jump
         if (currentIndex >= houses.length) currentIndex = 0;
         houses[currentIndex] -= 2;
         if (!houses[currentIndex]) console.log(`Place ${currentIndex} has Valentine's day.`);
