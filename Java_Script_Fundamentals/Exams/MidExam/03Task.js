@@ -1,3 +1,0 @@
-function task3 () {
-
-} 

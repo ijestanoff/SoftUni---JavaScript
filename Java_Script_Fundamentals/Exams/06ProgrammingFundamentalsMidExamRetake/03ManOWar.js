@@ -1,4 +1,4 @@
-function manOWar (input) {
+function manOWar(input) {
     let islost = false;
     let pirateShip = input.shift().split('>').map(Number);
     let warship = input.shift().split('>').map(Number);
@@ -10,23 +10,23 @@ function manOWar (input) {
         if (command == 'Fire') {
             let ind = Number(commands[1]);
             let damage = Number(commands[2]);
-            if (ind < warship.length && ind>=0) {
+            if (ind < warship.length && ind >= 0) {
                 warship[ind] -= damage;
-                if (warship[ind] <=0) {
+                if (warship[ind] <= 0) {
                     console.log('You won! The enemy ship has sunken.');
                     islost = true;
                     break;
                 }
-            } 
+            }
         } else if (command == 'Defend') {
             let startInd = Number(commands[1]);
             let endInd = Number(commands[2]);
             let damage = Number(commands[3]);
-            if (startInd >=0 && startInd<pirateShip.length && endInd >=0 && endInd<pirateShip.length) {
-                if (startInd > endInd) [startInd,endInd] = [endInd,startInd];
-                for (let i=startInd; i<=endInd; i++){
+            if (startInd >= 0 && startInd < pirateShip.length && endInd >= 0 && endInd < pirateShip.length) {
+                if (startInd > endInd) [startInd, endInd] = [endInd, startInd];
+                for (let i = startInd; i <= endInd; i++) {
                     pirateShip[i] -= damage;
-                    if (pirateShip[i] <=0) {
+                    if (pirateShip[i] <= 0) {
                         console.log("You lost! The pirate ship has sunken.");
                         islost = true;
                         break;
@@ -58,21 +58,21 @@ function manOWar (input) {
     }
 }
 
-manOWar (["12>13>11>20>66",
-"12>22>33>44>55>32>18",
-"70",
-"Fire 2 11",
-"Fire 8 100",
-"Defend 3 6 11",
-"Defend 0 3 5",
-"Repair 1 33",
-"Status",
-"Retire"]);
-manOWar (["2>3>4>5>2",
-"6>7>8>9>10>11",
-"20",
-"Status",
-"Fire 2 3",
-"Defend 0 4 11",
-"Repair 3 18",
-"Retire"]);
+manOWar(["12>13>11>20>66",
+    "12>22>33>44>55>32>18",
+    "70",
+    "Fire 2 11",
+    "Fire 8 100",
+    "Defend 3 6 11",
+    "Defend 0 3 5",
+    "Repair 1 33",
+    "Status",
+    "Retire"]);
+manOWar(["2>3>4>5>2",
+    "6>7>8>9>10>11",
+    "20",
+    "Status",
+    "Fire 2 3",
+    "Defend 0 4 11",
+    "Repair 3 18",
+    "Retire"]);

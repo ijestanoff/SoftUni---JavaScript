@@ -7,9 +7,7 @@ function treasureHunt(input) {
         if (command == 'Loot') commands.forEach(x => { if (!loots.includes(x)) loots.unshift(x) });
         else if (command == 'Drop') {
             let index = Number(commands[0]);
-            if (index < loots.length && index >= 0) {
-                loots.push(loots.splice(index, 1));
-            }
+            if (index < loots.length && index >= 0) loots.push(loots.splice(index, 1));
         } else if (command == 'Steal') console.log(loots.splice(-Number(commands[0])).join(', '));
     }
     let averageGain = 0;
