@@ -11,12 +11,11 @@ function towns(input) {
         towns.longitude = longitude; 
         allTowns.push(towns);
     }
-    //{ town: 'Sofia', latitude: '42.70', longitude: '23.33' }
     for (let part of allTowns) {
         console.log(part);
     }
 }
 
-console.log(towns (['Sofia | 42.696552 | 23.32601',
-'Beijing | 39.913818 | 116.363625']));
+towns (['Sofia | 42.696552 | 23.32601',
+'Beijing | 39.913818 | 116.363625']);
 // towns (['Plovdiv | 136.45 | 812.575']);
