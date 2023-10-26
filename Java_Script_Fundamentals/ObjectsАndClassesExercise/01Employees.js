@@ -4,7 +4,7 @@ function employees (input) {
         employees[part] = part.length;
     }
     for (let [key,value] of Object.entries(employees)) {
-        console.log(`Name: ${key} -- Personal Number: ${value}"`);
+        console.log(`Name: ${key} -- Personal Number: ${value}`);
     }
 }
 
