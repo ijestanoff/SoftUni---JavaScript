@@ -25,7 +25,6 @@ function movies(input) {
                 output += `"${key}":"${value}",`
             }
             output = output.slice(0,output.length-1) + '}'
-            //console.log(`{"name":"${movie}","date":"${movies[movie].date}","director":"${movies[movie].director}"}`);
             console.log(output);
         }
     }
