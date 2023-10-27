@@ -14,6 +14,8 @@ function inventory(input) {
         console.log(`items => ${hero.items}`);
     }
 }
+
+
 function solve(arr) {
     let heros = []
     arr.map(x => x.split(' / ')).map(x => heros.push({ name: x[0], level: +x[1], items: x[2] }))
