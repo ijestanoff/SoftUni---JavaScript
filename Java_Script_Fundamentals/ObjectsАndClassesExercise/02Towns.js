@@ -1,14 +1,11 @@
 function towns(input) {
     let allTowns = [];
     for (let part of input) {
-        let towns = {};
         let items = part.split(' | ');
         let town = items[0];
         let latitude = Number(items[1]).toFixed(2);
         let longitude = Number(items[2]).toFixed(2);
-        towns.town = town;
-        towns.latitude = latitude;
-        towns.longitude = longitude; 
+        let towns = {town, latitude, longitude};
         allTowns.push(towns);
     }
     for (let part of allTowns) {
