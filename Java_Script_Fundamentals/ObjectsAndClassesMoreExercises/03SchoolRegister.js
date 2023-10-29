@@ -25,35 +25,6 @@ function schoolRegister(input) {
         output += `\nAverage annual score from last year: ${(averageScore / count).toFixed(2)}\n`
         console.log(output);
     }
-
-    // let grade = 0
-    // let averageScore = 0;
-    // let output = '';
-    // let count = 0;
-    // for (let i = 0; i < students.length; i++) {
-    //     if (grade != students[i].grade) {
-    //         grade = students[i].grade;
-    //         output = `${grade} Grade\nList of students: ${students[i].name}`;
-    //         averageScore += students[i].average;
-    //         count++;
-    //     } else {
-    //         output += `, ${students[i].name}`;
-    //         averageScore += students[i].average;
-    //         count++
-    //         if (i == students.length - 1) {
-    //             output += `\nAverage annual score from last year: ${(averageScore / count).toFixed(2)}`
-    //             console.log(output);
-    //             return;
-    //         }
-    //         if (students[i].grade != students[i + 1].grade) {
-    //             output += `\nAverage annual score from last year: ${(averageScore / count).toFixed(2)}\n`
-    //             console.log(output);
-    //             averageScore = 0;
-    //             output = '';
-    //             count = 0;
-    //         }
-    //     }
-    //}
 }
 
 schoolRegister(["Student name: Mark, Grade: 8, Graduated with an average score: 4.75",
