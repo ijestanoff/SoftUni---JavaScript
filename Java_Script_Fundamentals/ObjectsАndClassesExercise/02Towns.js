@@ -8,11 +8,9 @@ function towns(input) {
         let towns = {town, latitude, longitude};
         allTowns.push(towns);
     }
-    for (let part of allTowns) {
-        console.log(part);
-    }
+    allTowns.forEach(part => console.log(part));
 }
 
 towns (['Sofia | 42.696552 | 23.32601',
 'Beijing | 39.913818 | 116.363625']);
-// towns (['Plovdiv | 136.45 | 812.575']);
+towns (['Plovdiv | 136.45 | 812.575']);

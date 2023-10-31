@@ -1,11 +1,7 @@
 function employees (input) {
     let employees = {};
-    for (let part of input) {
-        employees[part] = part.length;
-    }
-    for (let [key,value] of Object.entries(employees)) {
-        console.log(`Name: ${key} -- Personal Number: ${value}`);
-    }
+    input.forEach(part => employees[part] = part.length);
+    Object.entries(employees).forEach(tuple => console.log(`Name: ${tuple[0]} -- Personal Number: ${tuple[1]}`));
 }
 
 employees ([ 'Silas Butler', 'Adnaan Buckley', 'Juan Peterson', 'Brendan Villarreal' ]);
