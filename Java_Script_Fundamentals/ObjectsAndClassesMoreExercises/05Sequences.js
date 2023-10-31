@@ -1,19 +1,10 @@
 function sequences(input) {
     let numbers = [];
-    for (let part of input) {
-        let items = JSON.parse(part);
-        items.sort((a, b) => b - a);
-        if (!numbers.length) numbers.push(items);
-        else {
-            let unique = true;
-            for (let current of numbers) {
-                if (JSON.stringify(items) == JSON.stringify(current)) unique = false;
-            }
-            if (unique) numbers.push(items);
-        }
-    }
-    numbers.sort((a, b) => a.length - b.length);
-    for (let part of numbers) console.log(`[${part.join(', ')}]`);
+    input.forEach(part => {
+        let items = JSON.parse(part).sort((a, b) => b - a);
+        if (!numbers.filter(x => items.join(',') == x.join(',')).length) numbers.push(items);
+    });
+    numbers.sort((a, b) => a.length - b.length).forEach(part => console.log(`[${part.join(', ')}]`));
 }
 
 sequences([
