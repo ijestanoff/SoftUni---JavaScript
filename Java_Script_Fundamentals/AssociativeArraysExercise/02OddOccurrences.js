@@ -1,22 +1,14 @@
 function oddOccurrences (input) {
-    let arr = input.split(' ');
-    let words = [];
-    let numbers = [];
-    for (let w of arr) {
-        let word = w.toLowerCase();
-        if (words.includes(word)) {
-            numbers[words.indexOf(word)]++;
-        } else {
-            words.push(word);
-            numbers.push(1);
-        }
-    }
+    let words = {};
+    input.split(' ').forEach(word => {
+        word = word.toLowerCase() + ' ';
+        if (word in words) words[word]++;
+        else words[word] = 1;
+    });
     let output = '';
-    for (let i=0; i<numbers.length; i++) {
-        if (numbers[i] % 2 != 0) {
-            output += words[i] + ' ';
-        }
-    }
+    Object.entries(words).forEach (tuple => {
+        if (tuple[1] % 2 != 0) output += tuple[0];
+    });
     console.log(output);
 }
 
