@@ -1,26 +1,26 @@
-function aMinerTask (input) {
+function aMinerTask(input) {
     let array = {};
-    for (let index = 0; index < input.length; index+=2) {
-        if (!array.hasOwnProperty(input[index])) {
-            array[input[index]] = Number(input[index+1]);
+    do {
+        let metal = input.shift();
+        let quantity = input.shift();
+        if (!array.hasOwnProperty(metal)) {
+            array[metal] = Number(quantity);
         } else {
-            array[input[index]] += Number(input[index+1]);
+            array[metal] += Number(quantity);
         }
-    }
-    for (let product in array) {
-        console.log(`${product} -> ${array[product]}`);
-    }
+    } while (input.length > 0);
+    Object.entries(array).forEach(element => console.log(`${element[0]} -> ${element[1]}`));
 }
 
-aMinerTask ([
+aMinerTask([
     'Gold',
     '155',
     'Silver',
     '10',
     'Copper',
     '17'
-    ]);
-aMinerTask ([
+]);
+aMinerTask([
     'gold',
     '155',
     'silver',
@@ -29,4 +29,4 @@ aMinerTask ([
     '17',
     'gold',
     '15'
-    ]);
+]);
