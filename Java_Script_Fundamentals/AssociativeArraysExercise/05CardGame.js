@@ -1,47 +1,34 @@
-function cardGame (input) {
+function cardGame(input) {
     let players = {}
-    for (let row of input) {
-        let [player,hand] = row.split(': ');
+    let hands = { 1: 10, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, J: 11, Q: 12, K: 13, A: 14, S: 4, H: 3, D: 2, C: 1 }
+    input.forEach(row => {
+        let [player, hand] = row.split(': ');
         let cards = hand.split(', ');
-        if (!players.hasOwnProperty(player)) {
-            players[player] = [];
-        }
-        for (let card of cards) {
-            if (!players[player].includes(card)) {
-                players[player].push(card);
-            }
-        }
-    }
+        if (!players.hasOwnProperty(player)) players[player] = [];
+        cards.forEach(card => {
+            if (!players[player].includes(card)) players[player].push(card);
+        });
+    });
     for (let name in players) {
         let sum = 0;
-        for (let card of players[name]) {
-            let first = card[0];
-            let second = card[card.length-1];
-            let cardTotal = 0;
-            if (first >= '2' && first<=9) cardTotal = Number(first);
-            else if (first == '1') cardTotal = 10;
-            else if (first == 'J') cardTotal = 11;
-            else if (first == 'Q') cardTotal = 12;
-            else if (first == 'K') cardTotal = 13;
-            else if (first == 'A') cardTotal = 14;
-            if (second == 'S') sum += cardTotal * 4;
-            else if (second == 'H') sum += cardTotal * 3;
-            else if (second == 'D') sum += cardTotal * 2;
-            else if (second == 'C') sum += cardTotal;
-        }
+        players[name].forEach(card => {
+            let [first, second] = [card[0], card[card.length - 1]];
+            sum += hands[first] * hands[second];
+        });
         console.log(`${name}: ${sum}`);
     }
 }
 
-// cardGame ([
-// 'Peter: 2C, 4H, 9H, AS, QS',
-// 'Tomas: 3H, 10S, JC, KD, 5S, 10S',
-// 'Andrea: QH, QC, QS, QD',
-// 'Tomas: 6H, 7S, KC, KD, 5S, 10C',
-// 'Andrea: QH, QC, JS, JD, JC',
-// 'Peter: JD, JD, JD, JD, JD, JD'
-// ]);
-cardGame ([
+cardGame([
+    'Peter: 2C, 4H, 9H, AS, QS',
+    'Tomas: 3H, 10S, JC, KD, 5S, 10S',
+    'Andrea: QH, QC, QS, QD',
+    'Tomas: 6H, 7S, KC, KD, 5S, 10C',
+    'Andrea: QH, QC, JS, JD, JC',
+    'Peter: JD, JD, JD, JD, JD, JD'
+]);
+console.log('--------');
+cardGame([
     'John: 2C, 4H, 9H, AS, QS',
     'Slav: 3H, 10S, JC, KD, 5S, 10S',
     'Alex: 6H, 7S, KC, KD, 5S, 10C',
@@ -51,4 +38,4 @@ cardGame ([
     'Alex: 6H, 7S, KC, KD, 5S, 10C',
     'Thomas: QH, QC, JS, JD, JC',
     'John: JD, JD, JD, JD'
-    ]);
+]);
