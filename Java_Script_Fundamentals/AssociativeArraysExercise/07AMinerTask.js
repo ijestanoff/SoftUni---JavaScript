@@ -1,15 +1,11 @@
 function aMinerTask(input) {
     let array = {};
     do {
-        let metal = input.shift();
-        let quantity = input.shift();
-        if (!array.hasOwnProperty(metal)) {
-            array[metal] = Number(quantity);
-        } else {
-            array[metal] += Number(quantity);
-        }
-    } while (input.length > 0);
-    Object.entries(array).forEach(element => console.log(`${element[0]} -> ${element[1]}`));
+        let [metal, quantity] = input.splice(0, 2);
+        if (metal in array) array[metal] += Number(quantity);
+        else array[metal] = Number(quantity);
+    } while (input.length);
+    Object.entries(array).map(element => console.log(`${element[0]} -> ${element[1]}`));
 }
 
 aMinerTask([
