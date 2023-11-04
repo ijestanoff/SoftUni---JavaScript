@@ -3,8 +3,7 @@ function companyUsers(input) {
     input.forEach(part => {
         let [company, employe] = part.split(' -> ');
         if (!companies.hasOwnProperty(company)) {
-            companies[company] = [];
-            companies[company].push(employe);
+            companies[company] = [employe];
         } else if (!companies[company].includes(employe)) companies[company].push(employe);
     });
 

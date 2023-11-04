@@ -12,7 +12,8 @@ function worldTour(input) {
         } else if (command == 'Remove Stop') {
             let startIndex = Number(items[1]);
             let endIndex = Number(items[2]);
-            if (startIndex >=0 && startIndex < stops.length && endIndex >=0 && endIndex < stops.length && startIndex < endIndex) {
+            if (startIndex >=0 && startIndex < stops.length && endIndex >=0 && endIndex < stops.length) {
+                if (startIndex > endIndex) [startIndex, endIndex] = [endIndex, startIndex];
                 stops = stops.slice(0,startIndex) + stops.slice(endIndex+1); 
             }
         } else if (command == 'Switch') {

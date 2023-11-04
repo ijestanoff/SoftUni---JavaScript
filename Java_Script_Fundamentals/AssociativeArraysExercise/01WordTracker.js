@@ -3,7 +3,7 @@ function wordTracker(array) {
     array.shift().split(' ').forEach(word => {
         occurrences[word] = 0;
         array.forEach(part => { 
-            if (word == part) occurrences[word] += 1 
+            if (word == part) occurrences[word] ++; 
         });
     });
     Object.entries(occurrences).sort((a, b) => b[1] - a[1]).forEach(x => console.log(`${x[0]} - ${x[1]}`));
