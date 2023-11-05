@@ -1,7 +1,10 @@
 function theLimitationGame(input) {
     let message = input.shift();
-    for (let part of input) {
-        if (part == 'Decode') break;
+    input.forEach(part => { 
+        if (part == 'Decode') {
+            console.log(`The decrypted message is: ${message}`);
+            return;
+        }
         let commands = part.split('|');
         let command = commands[0];
         if (command == 'Move') {
@@ -19,8 +22,7 @@ function theLimitationGame(input) {
                 message = message.slice(0, currentIndex) + replacment + message.slice(currentIndex + substring.length);
             }
         }
-    }
-    console.log(`The decrypted message is: ${message}`);
+    });
 }
 
 theLimitationGame([
