@@ -13,6 +13,20 @@ function studentsAndCourses(input) {
         courses.push({ name, capacity: Number(capacity) });
       }
     }
+    if (elm.includes('[')) {
+      const username = elm.match(/(^.+)\[/i)[1];
+      const credits = Number(elm.match(/\[(\d+)\]/)[1]);
+      const email = elm.match(/[a-z0-9]+@[a-z]+[.][a-z]+/gi)[0];
+      const student = { username, email, credits };
+      students.push(student);
+      const studentCourse = elm.split(' ').slice(-1)[0];
+      const courseMatch = courses.find((course) => course.name === studentCourse);
+      if (courseMatch && courseMatch.capacity !== 0) {
+        courseMatch.capacity -= 1;
+        courseMatch.students = courseMatch.students ? [...courseMatch.students, student] : [student];
+        courseMatch.students.sort((a, b) => b.credits - a.credits);
+      }
+    }
   });
 
   input.forEach((elm) => {

@@ -3,13 +3,13 @@ function softUniStudents(input) {
     for (let part of input) {
         if (part.includes('@')) {
             let items = part.split(' with email ');
-            let [student, credit] = items[0].split('[');
+            let [name, credit] = items[0].split('[');
             credit = Number(credit.slice(0, credit.length - 1));
             let [email, course] = items[1].split(' joins ');
             if (course in courses) {
                 if (courses[course].capacity > 0) {
                     courses[course].capacity--;
-                    courses[course].students.push({name:student, email:email, credit: credit});
+                    courses[course].students.push({name, email, credit});
                 }
             }
         } else {
@@ -18,9 +18,8 @@ function softUniStudents(input) {
             else courses[course] = { students: [], capacity: Number(capacity) };
         }
     }
-    let coursesSort = Object.entries(courses);
-    coursesSort.sort((a, b) => b[1].students.length - a[1].students.length);
-    courses = Object.fromEntries(coursesSort);
+    courses = Object.fromEntries(Object.entries(courses)
+    .sort((a, b) => b[1].students.length - a[1].students.length));
 
     for (let course in courses) {
         console.log(`${course}: ${courses[course].capacity} places left`);
