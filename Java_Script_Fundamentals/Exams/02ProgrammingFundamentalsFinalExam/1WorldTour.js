@@ -5,9 +5,8 @@ function worldTour(input) {
         let command = items[0];
         if (command == 'Add Stop') {
             let index = Number(items[1]);
-            let string = items[2];
             if (index >= 0 && index < stops.length) {
-                stops = stops.slice(0, index) + string + stops.slice(index);
+                stops = stops.slice(0, index) + items[2] + stops.slice(index);
             }
         } else if (command == 'Remove Stop') {
             let startIndex = Number(items[1]);
