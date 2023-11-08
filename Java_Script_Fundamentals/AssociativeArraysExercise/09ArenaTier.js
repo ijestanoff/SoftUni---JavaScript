@@ -21,10 +21,8 @@ function arenaTier(input) {
         } else if (fight.includes(' -> ')) {
             let [gladiator, technique, skill] = fight.split(' -> ');
             skill = Number(skill);
-            if (!(gladiator in fighters)) {
-                fighters[gladiator] = {};
-                fighters[gladiator][technique] = skill;
-            } else if (!(technique in fighters[gladiator])) fighters[gladiator][technique] = skill;
+            if (!(gladiator in fighters)) fighters[gladiator] = { [technique]: skill };
+            else if (!(technique in fighters[gladiator])) fighters[gladiator][technique] = skill;
             else { //same country and sity
                 if (fighters[gladiator][technique] < skill) fighters[gladiator][technique] = skill;
             }

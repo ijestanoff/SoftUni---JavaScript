@@ -1,38 +1,21 @@
-function travelTime (input) {
+function travelTime(input) {
     let countries = {};
-    for (let destination of input) {
-        let part = destination.split(' > ');
-        let country = part[0];
-        let sity = part[1];
-        let cost = Number(part[2]);
-        if (!countries.hasOwnProperty(country)) {
-            countries[country] = {};
-            countries[country][sity] = cost;
-        } else if (!countries[country].hasOwnProperty(sity)) {
-            countries[country][sity] = cost;
-        } else { //same country and sity
-            if (countries[country][sity] > cost) {
-                countries[country][sity] = cost;
-            }
+    input.forEach(destination => {
+        let [country, sity, cost] = destination.split(' > ');
+        cost = Number(cost);
+        if (!(country in countries)) countries[country] = { [sity]: cost };
+        else if (!(sity in countries[country])) countries[country][sity] = cost;
+        else { //same country and sity
+            if (countries[country][sity] > cost) countries[country][sity] = cost;
         }
-    }
-    
-    let sortByKey = Object.entries(countries);
-    sortByKey.sort((a, b) => a[0].localeCompare(b[0]));
-    countries = Object.fromEntries(sortByKey);
-
-    for (let country in countries) {
-
-        let sortByValue = Object.entries(countries[country]);
-        sortByValue.sort((a,b) => a[1] - b[1]);
-        countries[country] = Object.fromEntries(sortByValue);
-
-        let row = `${country} -> `;
-        for (let sity in countries[country]) {
-            row += `${sity} -> ${countries[country][sity]} `;
-        }
+    });
+    //sort countries by alphabetical order
+    Object.entries(countries).sort((a, b) => a[0].localeCompare(b[0])).forEach(country => {
+        countries[country[0]] = Object.fromEntries(Object.entries(countries[country[0]]).sort((a, b) => a[1] - b[1]));
+        let row = `${country[0]} -> `;
+        Object.entries(countries[country[0]]).forEach(sity => row += `${sity[0]} -> ${sity[1]} `);
         console.log(row);
-    }
+    });
 }
 
 // travelTime ([
@@ -42,11 +25,11 @@ function travelTime (input) {
 //     "Albania > Tirana > 1000",
 //     "Bulgaria > Sofia > 200"
 //     ]);
-travelTime ([
+travelTime([
     'Bulgaria > Sofia > 25000',
     'Bulgaria > Sofia > 25000',
     'Kalimdor > Orgrimar > 25000',
     'Albania > Tirana > 25000',
     'Bulgaria > Varna > 25010',
     'Bulgaria > Lukovit > 10'
-    ]);
+]);
