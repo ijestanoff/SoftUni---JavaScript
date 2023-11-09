@@ -1,8 +1,6 @@
 function partyTime(input) {
-    let vip = [];
-    let regular = [];
-    let isPartiList = true;
-    for (let guest of input) {
+    let [vip, regular, isPartiList] = [[], [], true];
+    input.forEach(guest => {
         if (guest == 'PARTY') isPartiList = false;
         if (isPartiList) {
             if (!isNaN(guest.charAt(0))) vip.push(guest);
@@ -14,7 +12,7 @@ function partyTime(input) {
                 if (regular.includes(guest)) regular.splice(regular.indexOf(guest), 1);
             }
         }
-    }
+    });
     console.log(`${vip.length + regular.length}\n${vip.join('\n')}\n${regular.join('\n')}`);
 }
 

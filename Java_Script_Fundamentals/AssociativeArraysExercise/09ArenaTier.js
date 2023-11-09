@@ -1,23 +1,20 @@
 function arenaTier(input) {
-    let fighters = {};
+    let [fighters, gladiatorTotal] = [{}, {}];
     input.forEach(fight => {
         if (fight == 'Ave Cesar') {
-            let gladiatorTotal = {};
             Object.keys(fighters).forEach(person => {
                 let totalSkills = 0;
                 Object.keys(fighters[person]).forEach(technique => totalSkills += fighters[person][technique]);
                 gladiatorTotal[person] = totalSkills;
             });
             // First, sort by values in descending order, if values are equal, sort by keys in ascending order
-            gladiatorTotal = Object.fromEntries(Object.entries(gladiatorTotal)
-                .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])));
-
-            Object.keys(gladiatorTotal).forEach(gladiator => {
-                console.log(`${gladiator}: ${gladiatorTotal[gladiator]} skill`);
-                // First, sort by values in descending order, if values are equal, sort by keys in ascending order
-                Object.entries(fighters[gladiator]).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
-                    .forEach(technique => console.log(`- ${technique[0]} <!> ${technique[1]}`));
-            });
+            Object.entries(gladiatorTotal).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+                .forEach(gladiator => {
+                    console.log(`${gladiator[0]}: ${gladiatorTotal[gladiator[0]]} skill`);
+                    // First, sort by values in descending order, if values are equal, sort by keys in ascending order
+                    Object.entries(fighters[gladiator[0]]).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+                        .forEach(technique => console.log(`- ${technique[0]} <!> ${technique[1]}`));
+                });
         } else if (fight.includes(' -> ')) {
             let [gladiator, technique, skill] = fight.split(' -> ');
             skill = Number(skill);
