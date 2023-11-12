@@ -1,7 +1,7 @@
 function fancyBarcode (input) {
     input.shift();
     let regex = /@#+(?<barcode>[A-Z][A-Za-z0-9]{4}[A-Za-z0-9]*[A-Z])@#+/g;
-    input.map(part => {
+    input.forEach(part => {
         let match = part.matchAll(regex);
         let empty = true;
         for (curMatch of match) {
