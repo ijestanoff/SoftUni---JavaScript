@@ -49,17 +49,17 @@ needForSpeedIII([
     'Stop'
 ]
 );
-// needForSpeedIII([
-//     '4',
-//     'Lamborghini Veneno|11111|74',
-//     'Bugatti Veyron|12345|67',
-//     'Koenigsegg CCXR|67890|12',
-//     'Aston Martin Valkryie|99900|50',
-//     'Drive : Koenigsegg CCXR : 382 : 82',
-//     'Drive : Aston Martin Valkryie : 99 : 23',
-//     'Drive : Aston Martin Valkryie : 2 : 1',
-//     'Refuel : Lamborghini Veneno : 40',
-//     'Revert : Bugatti Veyron : 2000',
-//     'Stop'
-// ]
-// );
+needForSpeedIII([
+    '4',
+    'Lamborghini Veneno|11111|74',
+    'Bugatti Veyron|12345|67',
+    'Koenigsegg CCXR|67890|12',
+    'Aston Martin Valkryie|99900|50',
+    'Drive : Koenigsegg CCXR : 382 : 82',
+    'Drive : Aston Martin Valkryie : 99 : 23',
+    'Drive : Aston Martin Valkryie : 2 : 1',
+    'Refuel : Lamborghini Veneno : 40',
+    'Revert : Bugatti Veyron : 2000',
+    'Stop'
+]
+);
