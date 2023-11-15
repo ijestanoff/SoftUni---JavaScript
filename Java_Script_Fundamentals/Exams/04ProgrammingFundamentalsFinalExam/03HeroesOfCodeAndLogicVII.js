@@ -6,18 +6,18 @@ function heroesOfCodeAndLogicVII(input) {
             .forEach(hero => console.log(`${hero}\n  HP: ${heroes[hero].hp}\n  MP: ${heroes[hero].mp}`));
         if (!part.includes('-')) {
             let [hero, hp, mp] = part.split(' ');
-            heroes[hero] = { hp, mp };
+            heroes[hero] = { hp: +hp, mp: +mp };
         } else {
             let [command, hero, amount, attackerSpell] = part.split(' - ');
             let warrior = heroes[hero];
             if (command == 'CastSpell') {
-                if (warrior.mp >= +amount) {
-                    warrior.mp -= +amount;
+                if (warrior.mp >= amount) {
+                    warrior.mp -= amount;
                     console.log(`${hero} has successfully cast ${attackerSpell} and now has ${warrior.mp} MP!`);
                 } else console.log(`${hero} does not have enough MP to cast ${attackerSpell}!`);
             } else if (command == 'TakeDamage') {
-                if (warrior.hp > +amount) {
-                    warrior.hp -= +amount;
+                if (warrior.hp > amount) {
+                    warrior.hp -= amount;
                     console.log(`${hero} was hit for ${amount} HP by ${attackerSpell} and now has ${warrior.hp} HP left!`);
                 } else {
                     console.log(`${hero} has been killed by ${attackerSpell}!`);
