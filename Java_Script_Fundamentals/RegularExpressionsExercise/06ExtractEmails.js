@@ -1,12 +1,8 @@
 function extractEmails(input) {
-    //let regex = /\b[\w]+[.\_-]?[\w]*@[\w]+[.-]?[\w]*[.-]?[\w]*[.-]?[\w]+[.][\w]+\b/g;
-    let regex = /(^|\s)([\w]+[\.\-_]?[\w]+@([A-Za-z]+([\-_]?[A-Za-z]+(\.[A-Za-z]+)+)+))(\b|(?=\s))/g;
-    let match = input.matchAll(regex);
-    for (let curMatch of match) {
-        let email = curMatch[0];
-        if (email[0] != '_' && email[0] != '-' && email[0] != '.') {
-            console.log(email);
-        }
+    let regex = /(^|(?<=\s))([a-z0-9]+[\._-]?\w+@([a-z]+(\-?[a-z]+(\.[a-z]+)+)+))(\b|(?=\s))/gi;
+    let match = input.match(regex);
+    if (match) {
+        Object.values(match).forEach(email => console.log(email));
     }
 }
 
