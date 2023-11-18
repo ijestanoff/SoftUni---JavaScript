@@ -1,11 +1,12 @@
 function pirates(input) {
     let cities = {};
-    for (let part of input) {
+    input.forEach(part => { 
         if (part == 'End') {
             let towns = Object.keys(cities);
-            console.log(`Ahoy, Captain! There are ${towns.length} wealthy settlements to go to:`);
-            towns.forEach(city => console.log(`${city} -> Population: ${cities[city].population} citizens, Gold: ${cities[city].gold} kg`));
-            return;
+            if (towns.length) {
+                console.log(`Ahoy, Captain! There are ${towns.length} wealthy settlements to go to:`);
+                towns.forEach(city => console.log(`${city} -> Population: ${cities[city].population} citizens, Gold: ${cities[city].gold} kg`));
+            } else console.log(`Ahoy, Captain! All targets have been plundered and destroyed!`);
         } else {
             if (part.includes('||')) {
                 let [city, population, gold] = part.split('||');
@@ -36,15 +37,15 @@ function pirates(input) {
                         delete cities[city];
                     }
                 } else if (command == 'Prosper') {
-                    if (+peopleGold < 0) console.log(`Gold added cannot be a negative number!`);
+                    if (peopleGold < 0) console.log(`Gold added cannot be a negative number!`);
                     else {
-                        town.gold += +peopleGold;
+                        town.gold += peopleGold;
                         console.log(`${peopleGold} gold added to the city treasury. ${city} now has ${town.gold} gold.`);
                     }
                 }
             }
         }
-    }
+    });
 }
 
 // pirates(["Tortuga||345000||1250",

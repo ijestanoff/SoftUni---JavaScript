@@ -1,17 +1,13 @@
 function santasSecretHelper(input) {
-    let number = Number(input.shift());
+    let number = input.shift();
     let words = [];
-    let regex = /@(?<name>[A-Za-z]{2,})[^!\@\-\:\>]+!(?<type>[GN])!/;
     input.forEach(part => {
         if (part == 'end') return;
-        let string = '';
-        for (let symbol of part) {
-            string += String.fromCharCode(symbol.charCodeAt(0) - number);
-        }
-        words.push(string);
+        words.push(Array.from(part)
+            .reduce((acc, val) => acc + String.fromCharCode(val.charCodeAt() - +number), ''));
     });
     words.forEach(word => {
-        let match = word.match(regex);
+        let match = word.match(/@(?<name>[A-Za-z]{2,})[^!\@\-\:\>]+!(?<type>[GN])!/);
         if (match && match[2] == 'G') console.log(match[1]);
     });
 }
@@ -21,6 +17,7 @@ santasSecretHelper(['3',
     'CEreelh-nmguuejnW$J$',
     'CVwdq&gnmjkvng$Q$',
     'end']);
+console.log('-------');
 santasSecretHelper(['3',
     'N}eideidmk$(mnyenmCNlpamnin$J$',
     'ddddkkkkmvkvmCFrqqru-nvevek$J$nmgievnge',
