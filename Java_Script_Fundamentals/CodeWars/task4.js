@@ -1,5 +1,5 @@
 function solve (pin) {
-    return (/^\d{4}$|^\d{6}$/).test(pin)
+    return (/^\d{4}$|^\d{6}$/).test(pin);
 }
 
 console.log(solve("1234"));
