@@ -4,13 +4,11 @@ function activationKeys(input) {
         if (part == 'Generate') console.log(`Your activation key is: ${key}`);
         let [command, item1, item2, endIndex] = part.split('>>>');
         if (command == 'Contains') {
-            if (key.includes(item1)) console.log(`${key} contains ${item1}`);
-            else console.log("Substring not found!");
+            key.includes(item1) ? console.log(`${key} contains ${item1}`) : console.log("Substring not found!");
         } else if (command == 'Flip') {
             let startIndex = +item2;
             let peace = key.slice(startIndex, endIndex);
-            if (item1 == 'Upper') peace = peace.toUpperCase();
-            else peace = peace.toLowerCase();
+            item1 == 'Upper' ? peace = peace.toUpperCase() : peace = peace.toLowerCase();
             key = key.slice(0, startIndex) + peace + key.slice(endIndex);
             console.log(key);
         } else if (command == 'Slice') {

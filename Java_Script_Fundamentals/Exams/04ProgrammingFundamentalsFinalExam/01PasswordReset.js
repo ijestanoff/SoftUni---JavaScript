@@ -26,8 +26,7 @@ function passwordReset(input) {
                 password = password.slice(0, currentIndex) + item2 + password.slice(currentIndex + item1.length,);
                 find = true;
             }
-            if (!find) console.log('Nothing to replace!');
-            else console.log(password);
+            !find ? console.log('Nothing to replace!') : console.log(password);
         }
     });
 }

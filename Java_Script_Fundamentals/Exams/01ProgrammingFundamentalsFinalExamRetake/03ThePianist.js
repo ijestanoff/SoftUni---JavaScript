@@ -7,9 +7,8 @@ function thePianist(input) {
             Object.keys(pieces).forEach(piece => 
                 console.log(`${piece} -> Composer: ${pieces[piece].composer}, Key: ${pieces[piece].key}`));
         } else if (command == 'Add') {
-            if (piece in pieces) {
-                console.log(`${piece} is already in the collection!`);
-            } else {
+            if (piece in pieces) console.log(`${piece} is already in the collection!`);
+            else {
                 pieces[piece] = { composer, key };
                 console.log(`${piece} by ${composer} in ${key} added to the collection!`);
             }
@@ -17,16 +16,12 @@ function thePianist(input) {
             if (piece in pieces) { 
                 delete pieces[piece];
                 console.log(`Successfully removed ${piece}!`);
-            } else {
-                console.log(`Invalid operation! ${piece} does not exist in the collection.`);
-            }
+            } else console.log(`Invalid operation! ${piece} does not exist in the collection.`);
         } else if (command == 'ChangeKey') {
             if (piece in pieces) {
                 pieces[piece].key = composer;
                 console.log(`Changed the key of ${piece} to ${composer}!`);
-            } else {
-                console.log(`Invalid operation! ${piece} does not exist in the collection.`);
-            }
+            } else console.log(`Invalid operation! ${piece} does not exist in the collection.`);
         } else {
             let [piece, composer, key] = part.split('|');
             pieces[piece] = { composer, key };

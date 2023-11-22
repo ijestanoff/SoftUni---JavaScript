@@ -1,7 +1,7 @@
 function mirrorWords(input) {
     let [mirrorWords, pairs, output] = [{}, 0, ''];
-    let regex = /([#@])(?<word1>[A-Za-z]{3}[A-Za-z]*)\1\1(?<word2>[A-Za-z]{3}[A-Za-z]*)\1/g;
-    let match = input[0].matchAll(regex);
+    let pattern = /([#@])(?<word1>[A-Za-z]{3}[A-Za-z]*)\1\1(?<word2>[A-Za-z]{3}[A-Za-z]*)\1/g;
+    let match = input[0].matchAll(pattern);
     for (let curMatch of match) {
         pairs++;
         if (curMatch.groups.word1.length == curMatch.groups.word2.length) {

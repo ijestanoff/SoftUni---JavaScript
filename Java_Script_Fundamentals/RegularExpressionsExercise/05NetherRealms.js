@@ -10,7 +10,7 @@ function netherRealms(input) {
             if (symbol == '*') damage *= 2;
             else if (symbol == '/') damage /= 2;
         });
-        demons.push([demon, { health, damage }])
+        demons.push([demon, { health, damage }]);
     });
     demons.sort((a, b) => a[0].localeCompare(b[0]))
         .forEach(demon => console.log(`${demon[0]} - ${demon[1].health} health, ${demon[1].damage.toFixed(2)} damage`))

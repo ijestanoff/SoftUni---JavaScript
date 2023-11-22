@@ -22,8 +22,7 @@ function needForSpeedIII(input) {
                     }
                 } else console.log("Not enough fuel to make that ride");
             } else if (command == 'Refuel') {
-                if (vehicle.fuel < 75 - +item) fuel = +item;
-                else fuel = 75 - vehicle.fuel;
+                vehicle.fuel < 75 - +item ? fuel = +item : fuel = 75 - vehicle.fuel;
                 console.log(`${car} refueled with ${fuel} liters`);
                 vehicle.fuel += fuel;
             } else if (command == 'Revert') {
