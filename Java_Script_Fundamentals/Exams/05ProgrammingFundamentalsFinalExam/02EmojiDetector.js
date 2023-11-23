@@ -1,23 +1,15 @@
-function emojiDetector(input) {
-    let emojies = [];
-    let regexNum = /(?<number>[0-9])/g;
-    let regexEmoji = /(\*{2}|:{2})(?<emoji>[A-Z][a-z]{2,})\1/g;
-    let match = input[0].matchAll(regexNum);
-    let [cool, count] = [1, 0];
-    for (current of match) {
-        cool *= current.groups.number;
-    }
-    match = input[0].matchAll(regexEmoji);
+function emojiDetector([input]) {
+    let [emojies, count] = [[], 0];
+    let pattern = /(\*{2}|:{2})([A-Z][a-z]{2,})\1/g;
+    let cool = input.match(/\d/g).reduce((acc, val) => acc * val, 1);
+    match = input.matchAll(pattern);
     for (let current of match) {
-        let sum = 0;
-        for (let symbol of current.groups.emoji) {
-            sum += symbol.charCodeAt(0);
-        }
+        let sum = current[2].split('').reduce((acc, val) => acc + val.charCodeAt(), 0);
         if (sum >= cool) emojies.push(current[0]);
         count++;
     }
     console.log(`Cool threshold: ${cool}\n${count} emojis found in the text. The cool ones are:`);
-    emojies.forEach(emoji => console.log(emoji));
+    console.log(emojies.join('\n'));
 }
 
 emojiDetector(["In the Sofia Zoo there are 311 animals in total! ::Smiley:: This includes 3 **Tigers**, 1 ::Elephant:, 12 **Monk3ys**, a **Gorilla::, 5 ::fox:es: and 21 different types of :Snak::Es::. ::Mooning:: **Shy**"]);
