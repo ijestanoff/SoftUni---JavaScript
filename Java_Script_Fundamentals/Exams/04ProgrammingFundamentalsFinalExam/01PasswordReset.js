@@ -7,12 +7,8 @@ function passwordReset(input) {
         }
         let [command, item1, item2] = part.split(' ');
         if (command == 'TakeOdd') {
-            let output = '';
-            for (let i = 1; i < password.length; i += 2) {
-                output += password[i];
-            }
-            console.log(output);
-            password = output;
+            password = password.split('').reduce((acc, current, index) => index % 2 ? acc + current : acc, '');
+            console.log(password);
         } else if (command == 'Cut') {
             let index = Number(item1);
             let length = Number(item2);
@@ -26,7 +22,7 @@ function passwordReset(input) {
                 password = password.slice(0, currentIndex) + item2 + password.slice(currentIndex + item1.length,);
                 find = true;
             }
-            !find ? console.log('Nothing to replace!') : console.log(password);
+            find ? console.log(password) : console.log('Nothing to replace!');
         }
     });
 }
