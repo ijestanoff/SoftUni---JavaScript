@@ -14,13 +14,10 @@ function theLimitationGame(input) {
             let index = Number(commands[1]);
             let value = commands[2];
             message = message.slice(0, index) + value + message.slice(index);
-        } else if (command == 'ChangeAll') {
-            let substring = commands[1];
-            let replacment = commands[2];
-            let currentIndex = -1;
-            while ((currentIndex = message.indexOf(substring, currentIndex + 1)) !== -1) {
-                message = message.slice(0, currentIndex) + replacment + message.slice(currentIndex + substring.length);
-            }
+        } else {
+            let [substring, replacement] = tokens;
+            encriptedMsg = encriptedMsg.split(substring).join(replacement);
+            message = message.split(commands[1]).join(commands[2]);
         }
     });
 }
