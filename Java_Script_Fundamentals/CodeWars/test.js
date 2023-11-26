@@ -1,5 +1,9 @@
-let value = 18;
-value += 1000 * (value % 1000) - (value % 1000);
-console.log(value);
+function solve() {
+    total = arr => arr.reduce((acc, val) => acc + val.reduce((a, v) => a + v, ''), '');
+    let i = 1;
+    let test = [[], [0] , [], []];
+    //if (currentFloor > Math.max(...lift) && total(queues.splice(currentFloor)) == 0) break;
+    console.log(total(test));
+}
 
-console.log(18 % 1000);
+solve();
