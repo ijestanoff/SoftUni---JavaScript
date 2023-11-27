@@ -1,9 +1,14 @@
-function solve() {
-    total = arr => arr.reduce((acc, val) => acc + val.reduce((a, v) => a + v, ''), '');
-    let i = 1;
-    let test = [[], [0] , [], []];
-    //if (currentFloor > Math.max(...lift) && total(queues.splice(currentFloor)) == 0) break;
-    console.log(total(test));
+function integerSquareRoot(number) {
+	//coding and coding..
+  let bigIntValue = BigInt(number);
+  let squareRoot = BigInt(Math.floor(Math.sqrt(Number(bigIntValue))));
+  return squareRoot;
+  
+  
+  
+  
+  
+  
+  
 }
-
-solve();
+console.log(integerSquareRoot('1000000000000'));
