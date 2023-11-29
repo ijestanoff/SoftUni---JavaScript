@@ -1,9 +1,11 @@
-function fancyBarcode(input) {
+fancyBarcode = (input, pattern = /@#+([A-Z][A-Za-z0-9]{4,}[A-Z])@#+/) => {
     input.shift();
     input.map(part => {
-        if (match = part.match(/@#+([A-Z][A-Za-z0-9]{4,}[A-Z])@#+/)) {
-            let output = match[1].split('').filter(symbol => !isNaN(symbol)).reduce((acc, val) => acc + val, '');
-            output == '' ? console.log('Product group: 00') : console.log(`Product group: ${output}`);
+        if (match = part.match(pattern)) {
+            let output = match[1].split('')
+                .filter(symbol => !isNaN(symbol))
+                .reduce((acc, val) => acc + val, '');
+            console.log(`Product group: ${output || '00'}`);
         } else console.log('Invalid barcode');
     });
 }
