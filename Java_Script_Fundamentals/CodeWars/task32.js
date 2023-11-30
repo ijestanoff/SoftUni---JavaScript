@@ -56,10 +56,7 @@ function hand(holeCards, communityCards) {
                     type = 'straight-flush';
                     return { type, ranks: revertCard(ranksStraightFlush) };
                 }
-            } else {
-                if (i > 1) break;
-                ranksStraightFlush = [];
-            }
+            } else ranksStraightFlush = [];
         }
     }
 
