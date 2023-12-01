@@ -1,8 +1,7 @@
 function oddOccurrences(input) {
     let words = {};
     input.toLowerCase().split(' ').forEach(word => word in words ? words[word]++ : words[word] = 1);
-    let odd = Object.keys(words).filter(tuple => words[tuple] % 2 != 0);
-    console.log(odd.join(' '));
+    console.log(Object.keys(words).filter(tuple => words[tuple] % 2 != 0).join(' '));
 }
 
 // function oddOccurrences(arr) {
