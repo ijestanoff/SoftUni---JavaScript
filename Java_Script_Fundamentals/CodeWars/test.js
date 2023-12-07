@@ -1,9 +1,10 @@
 function integerSquareRoot(number) {
 	//coding and coding..
-  let bigIntValue = BigInt(number);
-  let squareRoot = BigInt(Math.floor(Math.sqrt(Number(bigIntValue))));
-  return squareRoot;
-  
+  let str = 'QWERTYUIOP'
+  let test = Array.from(str);
+  console.log(test);
+  let chars        = [...str];
+  console.log(chars);
   
   
   
