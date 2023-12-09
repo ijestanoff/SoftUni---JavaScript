@@ -1,10 +1,7 @@
 function integerSquareRoot(number) {
 	//coding and coding..
-  let str = 'QWERTYUIOP'
-  let test = Array.from(str);
-  console.log(test);
-  let chars        = [...str];
-  console.log(chars);
+    let i = 1234567890123456;
+    return i * 3;
   
   
   
