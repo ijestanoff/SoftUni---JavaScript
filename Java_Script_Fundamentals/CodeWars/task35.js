@@ -1,7 +1,8 @@
 function findPosition(num) {
     let idx = '12345678910111213141516'.indexOf(num);
     if (idx != -1) return idx;
-    for (let step = 2; step < num.length; step++) {
+    for (let step = 2; step <= num.length; step++) {
+        let find = [];
         for (let offset = 0; offset < step; offset++) {
             let n = [];
             let init = num.slice(0, offset);
@@ -9,8 +10,26 @@ function findPosition(num) {
             for (let idx = offset; idx < num.length; idx += step) {
                 n.push(num.slice(idx, idx + step));
             }
+            let fit = false;
+            if (n.length == 1) find.push(n[0]);
+            else {
+                for (let i = 1; i < n.length; i++) {
+                    if (n[i - 1].length == step && n[i].length == step) { //two compared numbers are with full length
+                        if (+n[i - 1] + 1 == +n[i]) fit = true; 
+                        else {
+                            fit = false;
+                            break;
+                        }
+                    }
+                }
+                if (fit) {
+                    if (n[0].length == step) return [position(n[0]),n[0]];
+                }
+            }
+            console.log(n);
         }
     }
+    return 99999;
 }
 
 const position = (number) => {
@@ -23,7 +42,7 @@ const position = (number) => {
     return offset[len] + (number - 1 - Number('9'.repeat(len - 1))) * len + 1;
 }
 
-console.log(findPosition('12345670899'));
-console.log(position(119855589995974));
+console.log(findPosition('99100'));
+console.log(position(4949));
 
 //"555899959741198" , 1686722738828503
