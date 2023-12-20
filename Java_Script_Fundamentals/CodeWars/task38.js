@@ -8,7 +8,7 @@ function sumIntervals(intervals) {
     })
 
     function put(start, end, newInt) {
-        let mid = Math.floor((end - start) / 2);
+        let mid = Math.floor((end + start) / 2);
         let topMid = row[mid][1] - 1;
         let topRow = row[row.length - 1][1] - 1;
         let topNewInt = newInt[1] - 1;
@@ -22,24 +22,68 @@ function sumIntervals(intervals) {
             row.splice(mid + 1, 0, newInt);
             start = end;
         } else if (topMid < newInt[0]) { //top half position
+            //if (row.length == 4) start = 2;
+            //else 
             start = mid;
         } else if (row[mid][0] > topNewInt) {//bottom half position
             end = mid;
         } else if (topMid >= topNewInt && newInt[0] >= row[mid][0]) {//inside position -> clear interval
             start = end;
-        } //else if (row[mid][0] <= newInt[0] && row[mid][1] < newInt[1]) {//extend mid interval up
-        //     row[mid][1] = newInt[1];
-        //     let count = 1;
-        //     while ()
-        //     start = end;
-        // }
+        } else if (row[mid][0] <= newInt[0] && row[mid][1] < newInt[1]) {//extend mid interval up
+            row[mid][1] = newInt[1];
+            while (true) {
+                if (mid + 1 == row.length) break;
+                if (row[mid][1] >= row[mid + 1][0]) {
+                    if (row[mid][1] < row[mid + 1][1]) row[mid][1] = row[mid + 1][1];
+                    row.splice(mid + 1, 1);
+                } else break;
+            }
+            start = end;
+        } else if (row[mid][1] >= newInt[1] && row[mid][0] > newInt[0]) {//extend mid interval down
+            row[mid][0] = newInt[0];
+            while (true) {
+                if (mid == 0) break;
+                if (row[mid][0] <= row[mid - 1][1]) {
+                    if (row[mid][0] > row[mid - 1][0]) row[mid][0] = row[mid - 1][0];
+                    row.splice(--mid, 1);
+                } else break;
+            }
+            start = end;
+        } else if (row[mid][0] >= newInt[0] && row[mid][1] <= newInt[1]) {//extend mid interval up and down
+            row[mid][1] = newInt[1];
+            while (true) {
+                if (mid + 1 == row.length) break;
+                if (row[mid][1] >= row[mid + 1][0]) {
+                    if (row[mid][1] < row[mid + 1][1]) row[mid][1] = row[mid + 1][1];
+                    row.splice(mid + 1, 1);
+                } else break;
+            }
+            row[mid][0] = newInt[0];
+            while (true) {
+                if (mid == 0) break;
+                if (row[mid][0] <= row[mid - 1][1]) {
+                    if (row[mid][0] > row[mid - 1][0]) row[mid][0] = row[mid - 1][0];
+                    row.splice(--mid, 1);
+                } else break;
+            }
+            start = end;
+        }
         return [start, end];
     }
-    return row;
-    //return row.reduce((acc, val) => acc + val[1] - val[0], 0);
+    return row.reduce((acc, val) => acc + val[1] - val[0], 0);
 }
 
-console.log(sumIntervals([[1, 4], [-100, -98], [8, 10], [-5, -3], [5, 6], [-2, 0], [-20,-17], [11,12], [-30,-32],[90,91],[1,4]]));// 7
+//console.log(sumIntervals([[1, 4], [-100, -98], [8, 10], [-5, -3], [5, 6], [-2, 0], [-20,-17], [11,12], [-30,-32],[90,91],[-110,500]]));// 7
 //console.log(sumIntervals([[1, 4], [8, 10], [-5, -3], [5, 6], [-2, 0]]));// 7
 //console.log(sumIntervals([[1, 5], [1, 5]]));// 4
-//console.log(sumIntervals([[1, 4], [7, 10], [3, 5]]));// 7
+console.log(sumIntervals([
+    [ -65, -28 ],
+    [ 425, 450 ],
+    [ 181, 360 ],
+    [ -460, -415 ],
+    [ 398, 474 ],
+    [ -75, 211 ],
+    [ -425, 234 ],
+    [ 34, 495 ],
+    [ 91, 461 ]
+  ]));// 7
