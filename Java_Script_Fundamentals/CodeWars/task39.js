@@ -14,9 +14,9 @@ function justify(text, width) {
         let total = width - count;
         let spaceCnt = row.length - 1;
         output += row.shift();
-        row.forEach (word => {
+        row.forEach(word => {
             let space = ' '.repeat(Math.ceil(total / spaceCnt--));
-            output +=  space + word;
+            output += space + word;
             total -= space.length;
         });
         output += '\n'
