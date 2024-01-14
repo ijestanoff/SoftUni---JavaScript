@@ -1,6 +1,6 @@
-solve = (arr, num) => Array(num).fill(0).reduce((_,__) => (arr.unshift(arr.pop()),arr),arr).join('')
+solve = (arr, num) => Array(num).fill(0).reduce(_ => (arr.unshift(arr.pop()),arr),arr).join(' ')
 
-https://pastebin.com/UuWTgzQU
+// https://pastebin.com/MfS1D4ca
 
 console.log(solve(['1', 
 '2', 

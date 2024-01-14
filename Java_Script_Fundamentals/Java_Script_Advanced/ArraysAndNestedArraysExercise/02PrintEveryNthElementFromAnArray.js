@@ -1,4 +1,4 @@
-print = (array, num) => array.filter((elm, idx) => idx % num == 0)
+print = (array, num) => array.filter((_, idx) => idx % num == 0)
 
 https://pastebin.com/QB5XKgRm
 
