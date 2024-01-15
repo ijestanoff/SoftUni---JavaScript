@@ -1,6 +1,6 @@
 solve = arr => arr.reduce((acc, val) => (acc[acc.length-1] <= val || (!acc.length)? acc.push(val) : 0, acc), [])
 
-https://pastebin.com/UCB4q03V
+// https://pastebin.com/UCB4q03V
 console.log(solve([1,
     3,
     8,
