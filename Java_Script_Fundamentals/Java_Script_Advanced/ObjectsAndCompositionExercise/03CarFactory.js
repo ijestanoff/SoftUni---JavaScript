@@ -9,7 +9,8 @@ function carFactory(car) {
     delete car.color;
     let wheelsize = car.wheelsize;
     if (wheelsize % 2 == 0) wheelsize--;
-    car.wheelsize = [wheelsize, wheelsize, wheelsize, wheelsize];
+    car.wheels = [wheelsize, wheelsize, wheelsize, wheelsize];
+    delete car.wheelsize;
     return car;
 }
 
