@@ -1,5 +1,10 @@
 print = (array, symbol) => console.log(array.join(symbol))
 
+
+/* all 8
+https://pastebin.com/NMKgeiHX
+*/
+
 print (['One', 
 'Two', 
 'Three', 

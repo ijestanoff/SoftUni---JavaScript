@@ -20,9 +20,7 @@ function ticTacToe(mov) {
                     firstPlay = true;
                 }
                 break;
-            } else {
-                console.log('This place is already taken. Please choose another!');
-            }
+            } else console.log('This place is already taken. Please choose another!');
         }
         for (let i = 0; i < 3; i++) {
             let resultH = board[i].join('');
