@@ -52,14 +52,15 @@ describe("Payment Package tests", () => {
             expect(() => new PaymentPackage('Ana', 11)).not.to.throw('Value must be a non-negative number');
         });
 
-        // let instance = new PaymentPackage('Ana', 11);
-        // it('Should not throw error when the new Name is a zero', () => {
-        //     expect(() => instance.value = 0).not.to.throw('Value must be a non-negative number');
-        // });
-        it('Set value to null', () => {
-            let instance = new PaymentPackage('Name', 100);
-            assert.doesNotThrow(() => { instance.value = 0 })
+        
+        it('Should not throw error when the new Name is a zero', () => {
+            let instance = new PaymentPackage('Ana', 11);
+            expect(() => instance.value = 0).not.to.throw('Value must be a non-negative number');
         });
+        // it('Set value to null', () => {
+        //     let instance = new PaymentPackage('Name', 100);
+        //     assert.doesNotThrow(() => instance.value = 0)
+        // });
     });
 
     describe("Payment Package tests for VAT", () => {
