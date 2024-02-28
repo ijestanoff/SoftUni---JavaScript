@@ -7,18 +7,24 @@ const DEBUG = false;
 const slowMo = 500;
 
 const mockData = {
-  profile: [
+  list: [
     {
-      _id: '1001',
-      username: 'John',
-      email: 'john@users.bg',
-      age: 31,
+      author: 'Spami',
+      content: 'Hello, are you there?',
+    },
+    {
+      author: 'Garry',
+      content: 'Yep, whats up :?',
+    },
+    {
+      author: 'George',
+      content: 'Hello, guys! :))',
     },
   ],
 };
 
 const endpoints = {
-  list: '/jsonstore/advanced/profiles',
+  list: '/jsonstore/messenger',
 };
 
 let browser;
@@ -30,9 +36,9 @@ describe('E2E tests', function () {
   this.timeout(DEBUG ? 120000 : 7000);
   before(
     async () =>
-    (browser = await chromium.launch(
-      DEBUG ? { headless: false, slowMo } : {}
-    ))
+      (browser = await chromium.launch(
+        DEBUG ? { headless: false, slowMo } : {}
+      ))
   );
   after(async () => await browser.close());
   beforeEach(async () => {
@@ -46,75 +52,53 @@ describe('E2E tests', function () {
   });
 
   // Test proper
-  describe('Profile Info', () => {
-    it('Load profiles', async () => {
-      const data = mockData.profile;
+  describe('Messenger Info', () => {
+    it('Load Message', async () => {
+      const data = mockData.list;
       const { get } = await handle(endpoints.list);
       get(data);
 
       await page.goto(host);
-      await page.waitForSelector('.profile');
+      await page.waitForSelector('#refresh');
 
-      const post = await page.$$eval(`.profile`, (t) =>
-        t.map((s) => s.textContent)
+      await page.click('input[value="Refresh"]');
+
+      const post = await page.$$eval(`textarea`, (t) => t.map((s) => s.value));
+
+      expect(post[0]).to.equal(
+        `${data[0].author}: ${data[0].content}\n${data[1].author}: ${data[1].content}\n${data[2].author}: ${data[2].content}`
       );
-      expect(post.length).to.equal(data.length);
     });
 
-    it('Check profile name', async () => {
-      const data = mockData.profile;
-      const { get } = await handle(endpoints.list);
-      get(data);
-
+    it('Send Message API call', async () => {
+      const data = mockData.list[0];
       await page.goto(host);
-      await page.waitForSelector('.profile');
 
-      await page.click('input[value="unlock"]');
-      await page.click('text=Show more');
+      const { post } = await handle(endpoints.list);
+      const { onRequest } = post();
 
-      const post = await page.$$eval(`input[name="user1Username"]`, (t) =>
-        t.map((s) => s.value)
-      );
+      await page.waitForSelector('#submit');
 
-      expect(post[0]).to.equal(data[0].username);
-    });
+      await page.fill('input[name="author"]', data.author + '1');
+      await page.fill('input[name="content"]', data.content + '1');
 
-    it('Check isLocked', async () => {
-      const data = mockData.profile;
-      const { get } = await handle(endpoints.list);
-      get(data);
+      const [request] = await Promise.all([
+        onRequest(),
+        page.click('input[value="Send"]'),
+      ]);
 
-      await page.goto(host);
-      await page.waitForSelector('.profile');
+      const postData = JSON.parse(request.postData());
 
-      const post = await page.$$eval(`input:checked`, (t) =>
-        t.map((s) => s.value)
-      );
-      expect(post[0]).to.equal('lock');
-    });
-
-    it('Check information when in unlock', async () => {
-      const data = mockData.profile;
-      const { get } = await handle(endpoints.list);
-      get(data);
-
-      await page.goto(host);
-      await page.waitForSelector('.profile');
-
-      await page.click('input[value="unlock"]');
-      await page.click('text=Show more');
-      const post = await page.$$eval(`input[type="email"]`, (t) =>
-        t.map((s) => s.value)
-      );
-      expect(post[0]).to.equal(data[0].email);
-      expect(post[1]).to.equal(`${data[0].age}`);
+      expect(postData.author).to.equal(data.author + '1');
+      expect(postData.content).to.equal(data.content + '1');
     });
   });
 });
 
 async function setupContext(context) {
   // Catalog and Details
-  await handleContext(context, endpoints.list, { get: mockData.profile });
+  await handleContext(context, endpoints.list, { get: mockData.list });
+  await handleContext(context, endpoints.list, { post: mockData.list[0] });
   await handleContext(context, endpoints.info('1001'), {
     get: mockData.details[0],
   });

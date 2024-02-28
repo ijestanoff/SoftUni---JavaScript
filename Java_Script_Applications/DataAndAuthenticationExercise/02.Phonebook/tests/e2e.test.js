@@ -7,18 +7,23 @@ const DEBUG = false;
 const slowMo = 500;
 
 const mockData = {
-  profile: [
+  list: [
     {
+      person: 'Maya',
+      phone: '+1-555-7653',
       _id: '1001',
-      username: 'John',
-      email: 'john@users.bg',
-      age: 31,
+    },
+    {
+      person: 'Peter',
+      phone: '+1-545-7353',
+      _id: '1002',
     },
   ],
 };
 
 const endpoints = {
-  list: '/jsonstore/advanced/profiles',
+  catalog: '/jsonstore/phonebook',
+  delete: (id) => `jsonstore/phonebook/${id}`,
 };
 
 let browser;
@@ -30,9 +35,9 @@ describe('E2E tests', function () {
   this.timeout(DEBUG ? 120000 : 7000);
   before(
     async () =>
-    (browser = await chromium.launch(
-      DEBUG ? { headless: false, slowMo } : {}
-    ))
+      (browser = await chromium.launch(
+        DEBUG ? { headless: false, slowMo } : {}
+      ))
   );
   after(async () => await browser.close());
   beforeEach(async () => {
@@ -46,105 +51,96 @@ describe('E2E tests', function () {
   });
 
   // Test proper
-  describe('Profile Info', () => {
-    it('Load profiles', async () => {
-      const data = mockData.profile;
-      const { get } = await handle(endpoints.list);
+  describe('Messenger Info', () => {
+    it('Load Message', async () => {
+      const data = mockData.list;
+      const { get } = await handle(endpoints.catalog);
       get(data);
 
       await page.goto(host);
-      await page.waitForSelector('.profile');
+      await page.waitForSelector('#btnLoad');
 
-      const post = await page.$$eval(`.profile`, (t) =>
+      await page.click('#btnLoad');
+
+      const phone = await page.$$eval(`#phonebook li`, (t) =>
         t.map((s) => s.textContent)
       );
-      expect(post.length).to.equal(data.length);
+
+      expect(phone[0]).to.equal(`${data[0].person}: ${data[0].phone}Delete`);
+      expect(phone[1]).to.equal(`${data[1].person}: ${data[1].phone}Delete`);
     });
 
-    it('Check profile name', async () => {
-      const data = mockData.profile;
-      const { get } = await handle(endpoints.list);
+    it('Length Message', async () => {
+      const data = mockData.list;
+      const { get } = await handle(endpoints.catalog);
       get(data);
 
       await page.goto(host);
-      await page.waitForSelector('.profile');
+      await page.waitForSelector('#btnLoad');
 
-      await page.click('input[value="unlock"]');
-      await page.click('text=Show more');
+      await page.click('#btnLoad');
 
-      const post = await page.$$eval(`input[name="user1Username"]`, (t) =>
-        t.map((s) => s.value)
+      const phone = await page.$$eval(`#phonebook li`, (t) =>
+        t.map((s) => s.textContent)
       );
-
-      expect(post[0]).to.equal(data[0].username);
+      await page.waitForTimeout(500);
+      expect(phone.length).to.equal(data.length);
     });
 
-    it('Check isLocked', async () => {
-      const data = mockData.profile;
-      const { get } = await handle(endpoints.list);
-      get(data);
-
+    it('Send Message API call', async () => {
+      const data = mockData.list[0];
       await page.goto(host);
-      await page.waitForSelector('.profile');
 
-      const post = await page.$$eval(`input:checked`, (t) =>
-        t.map((s) => s.value)
-      );
-      expect(post[0]).to.equal('lock');
+      const { post } = await handle(endpoints.catalog);
+      const { onRequest } = post();
+
+      await page.waitForSelector('#person');
+      await page.waitForSelector('#phone');
+
+      await page.fill('input[id="person"]', data.person + '1');
+      await page.fill('input[id="phone"]', data.phone + '1');
+
+      const [request] = await Promise.all([
+        onRequest(),
+        page.click('#btnCreate'),
+      ]);
+
+      const postData = JSON.parse(request.postData());
+
+      expect(postData.person).to.equal(data.person + '1');
+      expect(postData.phone).to.equal(data.phone + '1');
     });
 
-    it('Check information when in unlock', async () => {
-      const data = mockData.profile;
-      const { get } = await handle(endpoints.list);
-      get(data);
-
+    it('Delete makes correct API call', async () => {
+      const data = mockData.list[0];
       await page.goto(host);
-      await page.waitForSelector('.profile');
+      const { del } = await handle(endpoints.delete(data._id));
+      const { onResponse, isHandled } = del({ id: data._id });
 
-      await page.click('input[value="unlock"]');
-      await page.click('text=Show more');
-      const post = await page.$$eval(`input[type="email"]`, (t) =>
-        t.map((s) => s.value)
-      );
-      expect(post[0]).to.equal(data[0].email);
-      expect(post[1]).to.equal(`${data[0].age}`);
+      await page.click('#btnLoad');
+
+      await page.waitForSelector('#phonebook>li');
+
+      await Promise.all([
+        onResponse(),
+        page.click(
+          `#phonebook li:has-text("${data.person}: ${data.phone}") >> text=Delete`
+        ),
+      ]);
+
+      expect(isHandled()).to.be.true;
     });
   });
 });
 
 async function setupContext(context) {
   // Catalog and Details
-  await handleContext(context, endpoints.list, { get: mockData.profile });
-  await handleContext(context, endpoints.info('1001'), {
-    get: mockData.details[0],
-  });
-  await handleContext(context, endpoints.info('1002'), {
-    get: mockData.details[1],
-  });
+  await handleContext(context, endpoints.catalog, { get: mockData.list });
+  await handleContext(context, endpoints.catalog, { post: mockData.list[0] });
 
-  await handleContext(context, endpoints.details('1001'), {
-    get: mockData.catalog[0],
+  await handleContext(context, endpoints.delete('1001'), {
+    get: mockData.list[0],
   });
-  await handleContext(context, endpoints.details('1002'), {
-    get: mockData.catalog[1],
-  });
-  await handleContext(context, endpoints.details('1003'), {
-    get: mockData.catalog[2],
-  });
-
-  await handleContext(
-    endpoints.profile('0001'),
-    { get: mockData.catalog.slice(0, 2) },
-    context
-  );
-
-  await handleContext(endpoints.total('1001'), { get: 6 }, context);
-  await handleContext(endpoints.total('1002'), { get: 4 }, context);
-  await handleContext(endpoints.total('1003'), { get: 7 }, context);
-
-  await handleContext(endpoints.own('1001', '0001'), { get: 1 }, context);
-  await handleContext(endpoints.own('1002', '0001'), { get: 0 }, context);
-  await handleContext(endpoints.own('1003', '0001'), { get: 0 }, context);
 
   // Block external calls
   await context.route(
