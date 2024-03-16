@@ -6,7 +6,6 @@ function attachEvents() {
     const phoneRef = document.querySelector('#phone');
     const phonebookRef = document.querySelector('#phonebook');
 
-
     async function loadHandler() {
         phonebookRef.innerHTML = '';
         const request = await fetch(phonebookUrl);
@@ -21,11 +20,10 @@ function attachEvents() {
             li.appendChild(button);
             phonebookRef.appendChild(li);
         });
-
     }
 
     async function createHandler() {
-        const request = await fetch(phonebookUrl, {
+        await fetch(phonebookUrl, {
             method: 'post',
             headers: { 'Content-type': 'application/json' },
             body: JSON.stringify({'person': personRef.value, 'phone': phoneRef.value})

@@ -35,7 +35,6 @@ function editBook(id, title, author) {
     formButtonRef.textContent = 'Save';
     formRef.removeEventListener('submit', submitHandler);
     formRef.addEventListener('submit', (event) => saveHandler(id, event));
-
 }
 
 async function saveHandler(id, e) {
