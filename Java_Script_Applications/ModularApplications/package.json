@@ -12,5 +12,8 @@
   "dependencies": {
     "lit-html": "^3.1.2",
     "page": "^1.11.6"
+  },
+  "devDependencies": {
+    "@types/page": "^1.11.9"
   }
 }

@@ -4,9 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script type="module" src="/src/app.js"></script>
+    <script type="module" src="./src/app.js"></script>
+    <link rel="stylesheet" href="/static/notification.css">
+    <style> 
+        label {
+            display: block;
+        }
+        input {
+            display: block;
+        }
+        span.error {
+            color: red;
+        }
+        textarea {
+            display: block;
+        }
+        input.error, textarea.error {
+            border-color: red;
+        }
+    </style>
 </head>
 <body>
-    
+    <nav>
+        <a href="/">Catalog</a>
+        <a href="/create">Create</a>
+    </nav>
+    <main></main>
 </body>
 </html>

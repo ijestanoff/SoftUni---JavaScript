@@ -1,5 +1,6 @@
 import { render as renderBase, html } from '../node_modules/lit-html/lit-html.js';
-import { page } from '../node_modules/page/page.mjs';
+import {classMap} from '../node_modules/lit-html/directives/class-map.js';
+import  page  from '../node_modules/page/page.mjs';
 
 const root = document.querySelector('main');
 
@@ -10,5 +11,6 @@ function render(templateResult) {
 export {
     render,
     html,
+    classMap,
     page
 };

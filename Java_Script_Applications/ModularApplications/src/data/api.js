@@ -1,12 +1,12 @@
-import { clearUserData, getUserData } from './util.js';
+import { clearUserData, getUserData } from '../util.js';
 
-const host = 'http://localhost3030';
+const host = 'http://localhost:3030';
 
 export async function request(method, url, data) {
     const options = {
         method,
         headers: {}
-    }; 
+    };
 
     if (data != undefined) {
         options.headers['Content-Type'] = 'application/json';
@@ -44,3 +44,7 @@ export const post = (url, data) => request('post', url, data);
 export const put = (url, data) => request('put', url, data);
 export const patch = (url, data) => request('patch', url, data);
 export const del = (url) => request('delete', url);
+
+window.api = {
+    get, post, put, patch, del
+};
