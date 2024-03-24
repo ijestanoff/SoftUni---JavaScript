@@ -1,5 +1,3 @@
-import { get } from './dat/request.js';
-
 export function getUserData() {
     return JSON.parse(localStorage.getItem('user'));
 }
@@ -19,14 +17,22 @@ export function createSubmitHandler(callback) {
         const formData = new FormData(event.target);
         const entries = [...formData.entries()].map(([k, v]) => [k, v.trim()]);
 
-        callback(Object.fromEntries(entries));
+        callback(Object.fromEntries(entries), event.target);
     };
 }
 
-// const host = 'http://localhost:3030/data';
-
-// export async function getMovies() {
-//     return get(host + '/movies');
-//     //return await request('get', 'http://localhost:3030/data/movies');
-// }
-
+export function updateNav() {
+    const userData = getUserData();
+    if (userData) {
+        document.querySelector('#welcomeId').style.display = 'block';
+        document.querySelector('#logoutId').style.display = 'block';
+        document.querySelector('#registerId').style.display = 'none';
+        document.querySelector('#loginId').style.display = 'none';
+        document.querySelector('#welcome-msg').textContent = `Welcome, ${userData.email}`;
+    } else {
+        document.querySelector('#welcomeId').style.display = 'none';
+        document.querySelector('#logoutId').style.display = 'none';
+        document.querySelector('#registerId').style.display = 'block';
+        document.querySelector('#loginId').style.display = 'block';
+    }
+}
