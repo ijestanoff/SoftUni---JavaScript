@@ -11,13 +11,6 @@ export async function showDetailsView(ctx) {
     render(detailsTemplate(item, isOwner));
 }
 
-// ${isOwner ? html`
-// <div id="action-buttons">
-//     <a href="/edit/${item._id}" id="edit-btn">Edit</a>
-//     <a href="/delete/${item._id}" id="delete-btn">Delete</a>
-// </div>`:null}
-
-//name, imgUrl, price, releaseDate, artist, genre, description
 const detailsTemplate = (item, isOwner) => html`
 <section id="detailsPage">
     <div class="wrapper">

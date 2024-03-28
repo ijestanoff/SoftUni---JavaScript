@@ -7,8 +7,6 @@ const endpoints = {
     searchApi: (query) => `/data/albums?where=name%20LIKE%20%22${query}%22`
 };
 
-//name, imgUrl, price, releaseDate, artist, genre, description
-
 export async function getAllItems() {
     return get(endpoints.dashboard);
 }

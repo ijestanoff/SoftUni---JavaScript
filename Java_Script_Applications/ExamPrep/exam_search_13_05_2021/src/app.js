@@ -10,6 +10,7 @@ import { showDetailsView } from './views/showDetails.js';
 import { showEditView } from './views/showEdit.js';
 import { showDeleteView } from './views/showDelete.js';
 import { showSearchView } from './views/showSearch.js';
+import { showMyListings } from './views/showMyListing.js';
 
 updateNav();
 
@@ -21,7 +22,8 @@ page('/create', showCreateView);
 page('/catalog/:id', showDetailsView);
 page('/edit/:id', showEditView);
 page('/delete/:id', showDeleteView);
-page('/search', showSearchView);
+page('/byYear', showSearchView);
+page('/myListings', showMyListings);
 page.start();
 
 document.querySelector('#logoutBtn').addEventListener('click', async () => {

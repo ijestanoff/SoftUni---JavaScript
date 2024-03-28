@@ -24,14 +24,13 @@ export function createSubmitHandler(callback) {
 export function updateNav() {
     const userData = getUserData();
     if (userData) {
-        document.querySelector('#createId').style.display = 'inline-block';
-        document.querySelector('#logoutId').style.display = 'inline-block';
-        document.querySelector('#loginId').style.display = 'none';
-        document.querySelector('#registerId').style.display = 'none';
+        document.querySelector('#welcome').textContent = `Welcome ${userData.username}`;
+        document.querySelector('#guest').style.display = 'none';
+        document.querySelector('#profile').style.display = 'block';
+        document.querySelector('#welcome').style.display = 'block';
     } else {
-        document.querySelector('#createId').style.display = 'none';
-        document.querySelector('#logoutId').style.display = 'none';
-        document.querySelector('#loginId').style.display = 'inline-block';
-        document.querySelector('#registerId').style.display = 'inline-block';
+        document.querySelector('#guest').style.display = 'block';
+        document.querySelector('#profile').style.display = 'none';
+        document.querySelector('#welcome').style.display = 'none';
     }
 }

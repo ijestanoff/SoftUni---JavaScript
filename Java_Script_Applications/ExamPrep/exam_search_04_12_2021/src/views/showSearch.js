@@ -21,15 +21,12 @@ const searchTemplate = (onStart, hasUser, items) =>html`
 
     <h2>Results:</h2>
 
-    <!--Show after click Search button-->
     <div class="search-result">
-        <!--If have matches-->
         ${onStart? html`<p class="no-result">No result.</p>`: html`
              </div>
                  ${!items.length? html`<p class="no-result">No result.</p>` : items.map((item) => itemTemplate(item, hasUser)) }
             </div>
         `}
-        
     </div>
 </section>`;
 
