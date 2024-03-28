@@ -1,3 +1,5 @@
 node_modules/
 tests
 server
+package-lock.json
+package.json
