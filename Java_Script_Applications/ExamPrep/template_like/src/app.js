@@ -9,6 +9,7 @@ import { showHomeView } from './views/showHomeview.js';
 // import { showDetailsView } from './views/showDetails.js';
 // import { showEditView } from './views/showEdit.js';
 // import { showDeleteView } from './views/showDelete.js';
+// import { showMyPostView } from './views/showMyPost.js';
 
 updateNav();
 
@@ -20,6 +21,7 @@ page('/', showHomeView);
 // page('/catalog/:id', showDetailsView);
 // page('/edit/:id', showEditView);
 // page('/delete/:id', showDeleteView);
+// page('/myPost', showMyPostView);
 page.start();
 //main-element
 

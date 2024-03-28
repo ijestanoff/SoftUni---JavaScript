@@ -24,23 +24,3 @@ const itemTemplate = (item) =>html`
     <p><strong>Price:</strong><span class="price">${item.price}</span>$</p>
     <a class="details-btn" href="/catalog/${item._id}">Details</a>
 </div>`;
-
-{/* <div class="product">
-    <img src="./images/product example 1.png" alt="example1" />
-    <p class="title">Fond De Teint</p>
-    <p><strong>Price:</strong><span class="price">23.99</span>$</p>
-    <a class="details-btn" href="">Details</a>
-</div> */}
-
-/*<h2>Fun Facts</h2>
-<section id="dashboard">
-    ${items.length? items.map(itemTemplate): null}
-</section>
-${items.length? null : html`<h2>No Fun Facts yet.</h2>`}*/
-
-/*<div class="fact">
-    <img src=${item.imageUrl} alt="example1" />
-    <h3 class="category">${item.category}</h3>
-    <p class="description">${item.description}</p>
-    <a class="details-btn" href="/catalog/${item._id}">More Info</a>
-</div>*/

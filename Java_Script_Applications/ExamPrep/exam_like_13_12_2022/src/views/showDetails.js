@@ -52,34 +52,7 @@ const detailsTemplate = (item, hasUser, isOwner, likes, alreadyLiked) => html`
     </div>
 </section>`;
 
-//name,imageUrl, category, description, price
-
 async function onLike(e, id) {
     await likeItem(id);
     page.redirect(`/catalog/${id}`);
 }
-
-/*<section id="details">
-    <div id="details-wrapper">
-        <img id="details-img" src=${item.imageUrl} alt="example1" />
-        <p id="details-category">${item.category}</p>
-        <div id="info-wrapper">
-            <div id="details-description">
-                <p id="description">${item.description}</p>
-                <p id ="more-info">${item.moreInfo}</p>
-            </div>
-
-            <h3>Likes:<span id="likes">${likes}</span></h3>
-
-            <!--Edit and Delete are only for creator-->
-            <div id="action-buttons">
-            ${isOwner ? html`
-                <a href="/edit/${item._id}" id="edit-btn">Edit</a>
-                <a href="/delete/${item._id}" id="delete-btn">Delete</a>
-            `: hasUser && !alreadyLiked ? html`<a @click=${(e) => onLike(e, item._id)} href="" id="like-btn">Like</a>` : null}
-                    <!--Bonus - Only for logged-in users ( not authors )-->
-                <!-- <a href="" id="like-btn">Like</a> -->
-            </div>
-        </div>
-    </div>
-</section>*/

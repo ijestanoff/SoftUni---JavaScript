@@ -4,6 +4,7 @@ const endpoints = {
     dashboard: '/data/facts?sortBy=_createdOn%20desc',
     create: '/data/facts',
     details: '/data/facts/',
+    myPost: (userId) => `/data/posts?where=_ownerId%3D%22${userId}%22&sortBy=_createdOn%20desc`,
     likeItem: '/data/likes',
     getLikes: (itemId) => `/data/likes?where=factId%3D%22${itemId}%22&distinct=_ownerId&count`,
     getUserLikes: (itemId, userId) => `/data/likes?where=factId%3D%22${itemId}%22%20and%20_ownerId%3D%22${userId}%22&count`
@@ -15,6 +16,10 @@ export async function getAllItems() {
 
 export async function getItemsById(id) {
     return get(endpoints.details + id);
+}
+
+export async function getMyPost(userId){
+    return get(endpoints.myPost(userId));
 }
 
 export async function createItem(category, imageUrl, description, moreInfo) {

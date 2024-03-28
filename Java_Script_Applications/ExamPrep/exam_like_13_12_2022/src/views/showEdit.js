@@ -8,9 +8,7 @@ export async function showEditView(ctx) {
     render(editTemplate(item));
 }
 
-//
-//
-const editTemplate = (item) =>html`
+const editTemplate = (item) => html`
 <section id="edit">
     <div class="form">
     <h2>Edit Product</h2>
@@ -57,52 +55,11 @@ const editTemplate = (item) =>html`
     </div>
 </section>`;
 
-//name,imageUrl, category, description, price
-async function onEdit({name,imageUrl, category, description, price}, event) {
-    if (!category || !name || !description || !imageUrl || !price ) {
+async function onEdit({ name, imageUrl, category, description, price }, event) {
+    if (!category || !name || !description || !imageUrl || !price) {
         return alert('All fields are required!');
     }
     const id = event.dataset.id;
-    await editItem(id, name,imageUrl, category, description, price
-        );
+    await editItem(id, name, imageUrl, category, description, price);
     page.redirect(`/catalog/${id}`);
 }
-
-/*<section id="edit">
-    <div class="form">
-    <h2>Edit Fact</h2>
-    <form @submit=${createSubmitHandler(onEdit)} class="edit-form" data-id=${item._id}>
-        <input
-        type="text"
-        name="category"
-        id="category"
-        placeholder="Category"
-        .value = ${item.category}
-    />
-    <input
-        type="text"
-        name="image-url"
-        id="image-url"
-        placeholder="Image URL"
-        .value = ${item.imageUrl}
-    />
-    <textarea
-    id="description"
-    name="description"
-    placeholder="Description"
-    rows="10"
-    cols="50"
-    .value = ${item.description}
-    ></textarea>
-    <textarea
-    id="additional-info"
-    name="additional-info"
-    placeholder="Additional Info"
-    rows="10"
-    cols="50"
-    .value = ${item.moreInfo}
-    ></textarea>
-        <button type="submit">Post</button>
-    </form>
-    </div>
-</section>*/
