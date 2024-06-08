@@ -9,7 +9,7 @@ function plantDiscovery(input) {
         else if (part == 'Exhibition') {
             console.log(`Plants for the exhibition:`);
             Object.keys(plants).forEach(key => {
-                let average = 0
+                let average = 0;
                 plants[key].rating.forEach(elm => average += elm);
                 if (average) average /= plants[key].rating.length;
                 console.log(`- ${key}; Rarity: ${plants[key].rarity}; Rating: ${average.toFixed(2)}`);

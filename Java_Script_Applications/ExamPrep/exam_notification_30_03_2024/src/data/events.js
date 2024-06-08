@@ -3,8 +3,7 @@ import { del, get, post, put } from './request.js';
 const endpoints = {
     dashboard: '/data/cyberpunk?sortBy=_createdOn%20desc',
     create: '/data/cyberpunk',
-    details: '/data/cyberpunk/',
-    searchApi: (search) => `/data/fruits?where=name%20LIKE%20%22${search}%22`
+    details: '/data/cyberpunk/'
 };
 
 export async function getAllItems() {
@@ -13,10 +12,6 @@ export async function getAllItems() {
 
 export async function getItemById(id) {
     return get(endpoints.details + id);
-}
-
-export async function searchItems(search){
-    return get(endpoints.searchApi(search));
 }
 
 export async function createItem(item, imageUrl, price, availability, type, description) {

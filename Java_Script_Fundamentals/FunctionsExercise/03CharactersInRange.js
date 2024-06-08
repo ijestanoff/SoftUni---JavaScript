@@ -1,6 +1,7 @@
 function charactersInRange(a, b) {
     function range(x, y) {
-        let charString = '';
+        //let charString = '';
+        let charString = [];
         let startIndex = x.charCodeAt(0);
         let endIndex = y.charCodeAt(0);
         if (startIndex > endIndex) {
@@ -8,9 +9,10 @@ function charactersInRange(a, b) {
         }
         for (i = startIndex + 1; i < endIndex; i++) {
             let symbol = String.fromCharCode(i);
-            charString += symbol + ' ';
+            //charString += symbol + ' ';
+            charString.push(symbol);
         }
-        return charString;
+        return charString.join(' ');
     }
     console.log(range(a, b));
 }

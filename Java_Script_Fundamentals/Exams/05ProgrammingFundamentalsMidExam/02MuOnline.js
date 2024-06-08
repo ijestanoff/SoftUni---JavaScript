@@ -33,7 +33,6 @@ function muOnline (input) {
                 break;
             }
         }
-
     }
     if (health > 0) {
         console.log("You've made it!");
