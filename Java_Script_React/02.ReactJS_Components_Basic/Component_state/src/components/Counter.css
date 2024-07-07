@@ -1,0 +1,9 @@
+.positive-text {
+    font-weight: bold;
+    color : green;
+}
+
+.negative-text {
+    font-style: italic;
+    color : red;
+}
