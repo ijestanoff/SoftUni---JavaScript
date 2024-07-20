@@ -1,8 +1,13 @@
-# React + Vite
+# games-play-may-2024
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 1. Initialize Project
+ * Initialize git repo
+ * Add softuni practice server
+ * Add base vite react project as client
+ * CleanUp client
+ * Add project resources
+ * Separate html into components
+## 2. React Router
+ * Install react-router-dom
+ * Setup react-router-dom
+ * Add router in App.jsx
