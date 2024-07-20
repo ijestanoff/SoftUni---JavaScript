@@ -12,3 +12,4 @@
  * Install react-router-dom
  * Setup react-router-dom
  * Add router in App.jsx
+ * Add links in the navigation
