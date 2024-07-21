@@ -17,5 +17,8 @@
  * Service layer architecture
  * Abstract requester
  * Add games API
+ * Preseed practice server
 ## 4. Page Implementations
  * Game List
+ * Details
+ * Home
