@@ -13,3 +13,8 @@
  * Setup react-router-dom
  * Add router in App.jsx
  * Add links in the navigation
+## 3. Create Service Layer
+ * Service layer architecture
+ * Abstract requester
+## 4. Page Implementations
+ * Game List

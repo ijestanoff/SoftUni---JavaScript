@@ -1,4 +1,15 @@
+import { useEffect } from 'react';
+import requester from '../../api/requester';
+
 export default function GameList() {
+    useEffect(() => {
+        (async () => {
+            const gamesResult = await requester('GET', 'http://localhost:3030/jsonstore/games');
+
+            console.log(gamesResult);
+        })();
+    });
+
     return (
         <section id="catalog-page">
             <h1>All Games</h1>
