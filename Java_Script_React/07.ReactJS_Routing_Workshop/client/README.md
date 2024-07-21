@@ -16,5 +16,6 @@
 ## 3. Create Service Layer
  * Service layer architecture
  * Abstract requester
+ * Add games API
 ## 4. Page Implementations
  * Game List
