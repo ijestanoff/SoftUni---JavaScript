@@ -21,4 +21,13 @@
 ## 4. Page Implementations
  * Game List
  * Details
- * Home
+  * Details link
+  * Details route
+  * Api function - get one
+ * Home - Latest Games
+## 5. Commnets
+ * Create service for nested resource `commnets`
+ * Post comment to server
+ * Read comments from server
+ * Update comments in the component
+ * Clear form
