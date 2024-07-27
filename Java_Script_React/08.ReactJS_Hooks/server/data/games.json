@@ -1,0 +1,26 @@
+{
+    "f8d95434-4e4d-4399-a291-bf5b7eed038c": {
+        "title": "Cover-Fire",
+        "category": "Action",
+        "maxLevel": "4",
+        "imageUrl": "/images/avatar-1.jpg",
+        "summary": "Nai yakata igra e tva",
+        "_id": "f8d95434-4e4d-4399-a291-bf5b7eed038c"
+    },
+    "cceeb052-485b-46d2-b0e8-13f4fd3bf984": {
+        "title": "Eve online",
+        "category": "Hard",
+        "maxLevel": "11",
+        "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuoHkxwvKRGeugh9jOFBZnGMlxpMRGo1bGZQ&s",
+        "summary": "Nai yakata igra e tva",
+        "_id": "cceeb052-485b-46d2-b0e8-13f4fd3bf984"
+    },
+    "baa28a38-8d7d-42b0-9dd7-b22b325f0641": {
+        "title": "World of Warcraft",
+        "category": "adventure",
+        "maxLevel": "10",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/6/65/World_of_Warcraft.png",
+        "summary": "Miniature Heroes. Colossal Fun. Engage in a dazzling new sensation that's sweeping the inns and taverns across the land with this action-packed mobile strategy",
+        "_id": "baa28a38-8d7d-42b0-9dd7-b22b325f0641"
+    }
+}
