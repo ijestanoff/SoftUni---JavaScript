@@ -11,9 +11,7 @@ export default function GameDetails() {
 
     useEffect(() => {
         (async () => {
-            console.log('middle');
             const result = await gamesAPI.getOne(gameId);
-            console.log(result);
 
             setGame(result);
         })();

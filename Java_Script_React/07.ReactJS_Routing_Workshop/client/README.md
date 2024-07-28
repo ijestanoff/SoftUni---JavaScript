@@ -30,4 +30,21 @@
  * Post comment to server
  * Read comments from server
  * Update comments in the component
+ * Add comments in the component
  * Clear form
+## 6. API Hooks
+ * Form hook
+ * Game API Hooks
+ * Comments Hooks
+## 7. Authentication
+ * Auth API
+ * Auth API hook
+ * Auth state & context
+ * Login
+ * Register
+ * Logout
+## 8. UI Implementation
+ * Dynamic Navigation
+ * Create game
+  * Api function
+  * Hook
