@@ -39,8 +39,15 @@
 ## 7. Authentication
  * Auth API
   * Login
+  * Register
+  * Logout
  * Auth API hook
+  * Login hook
+  * Register hook
+  * Logout hook
+  * Authorized request
  * Auth state & context
+ * Token management
  * Login
  * Register
  * Logout
