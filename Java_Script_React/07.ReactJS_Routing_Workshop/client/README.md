@@ -50,9 +50,12 @@
  * Token management
  * Login
  * Register
+  * Add form validation
  * Logout
+ * Authorized Requests
 ## 8. UI Implementation
  * Dynamic Navigation
  * Create game
   * Api function
   * Hook
+ * Latest games
