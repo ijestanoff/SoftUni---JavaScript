@@ -61,6 +61,7 @@
  * Latest games 
  ## 9. Refactoring
   * Extract auth state from App component
+  * Persist auth state
  
  URL:
      http://localhost:3030/data/games?sortBy=_createdOn%20desc&pageSize=3
@@ -68,3 +69,4 @@
      seedData line 1341 -> server.js for data
 
 App.js layouthing and routes
+Wrapper function -> function that wraps another function
