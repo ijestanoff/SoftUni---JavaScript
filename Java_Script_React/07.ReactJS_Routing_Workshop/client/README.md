@@ -58,4 +58,5 @@
  * Create game
   * Api function
   * Hook
- * Latest games
+ * Latest games URL:
+     http://localhost:3030/data/games?sortBy=_createdOn%20desc&pageSize=3

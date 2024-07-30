@@ -17,7 +17,7 @@ export default function GameCreate() {
     const createHandler = async (values) => {
         try {
             const { _id: gameId } = await createGame(values);
-            navigate(`/games/${gameId}`);
+            navigate(`/games/${gameId}/details`);
         } catch (error) {
             //TODO show error
             console.log(error.message);
