@@ -35,9 +35,19 @@ export const useLogout = () => {
     const { logout: localLogout } = useAuthContext();
 
     const logoutHandler = async () => {
-        await logout();
         localLogout();
+        await logout();
     };
 
     return logoutHandler;
-}
+};
+
+// export default function withAuth(Component) {
+//     const ComponentWrapper = (props) => {
+//         const authContext = useAuthContext();
+
+//         return <Component {...props} auth={authContext} />;
+//     };
+
+//     return ComponentWrapper;
+// }

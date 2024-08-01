@@ -70,3 +70,14 @@
 
 App.js layouthing and routes
 Wrapper function -> function that wraps another function
+
+Catch error 403 forbiden when create games with invalid token
+
+check props with any component
+
+When component renders?
+    1. Initial Render (mount)
+    2. When parent renders
+    3. Props changed
+    4. useState changed
+    5. useReducer changed
