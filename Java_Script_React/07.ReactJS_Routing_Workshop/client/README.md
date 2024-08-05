@@ -87,3 +87,15 @@ When component renders?
     3. Props changed
     4. useState changed
     5. useReducer changed
+
+"Function Component": {
+		"prefix": "comp",
+		"body": [
+			"export default function ${1:Component}() {",
+			"	return (",
+			"		$2",
+			"	);"
+			"}"
+		],
+		"description": "Create function component"
+	}
