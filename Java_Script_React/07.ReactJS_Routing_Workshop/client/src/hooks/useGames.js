@@ -13,7 +13,13 @@ export function useGetAllGames() {
 }
 
 export function useGetOneGames(gameId) {
-    const [game, setGame] = useState({});
+    const [game, setGame] = useState({
+        title: '',
+        category: '',
+        maxLevel: '',
+        imageUrl: '',
+        summary: '',
+    });
 
     useEffect(() => {
         gamesAPI.getOne(gameId)
@@ -38,5 +44,4 @@ export function useCreateGame () {
     const gameCreateHandler = (gameData) => gamesAPI.create(gameData);
 
     return gameCreateHandler;
-    
 }

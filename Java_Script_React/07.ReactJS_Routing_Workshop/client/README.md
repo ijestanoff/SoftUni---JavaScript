@@ -62,6 +62,12 @@
  ## 9. Refactoring
   * Extract auth state from App component
   * Persist auth state
+  * Comments
+   * Create new comment
+   * Show all comment
+ * Refactored comments with useReducer
+ * Edit and delete ownership rendering
+ * Add route guards
  
  URL:
      http://localhost:3030/data/games?sortBy=_createdOn%20desc&pageSize=3

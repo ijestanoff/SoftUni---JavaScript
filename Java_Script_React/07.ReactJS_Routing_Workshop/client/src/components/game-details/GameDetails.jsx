@@ -1,18 +1,20 @@
-import { useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useGetOneGames } from '../../hooks/useGames';
 import { useForm } from '../../hooks/useForm';
 import { useAuthContext } from '../../contexts/AuthContext';
 import { useGetAllComments, useCreateComment } from '../../hooks/useComments';
+import gamesAPI from '../../api/games-api';
 
 const initialValues = {
     comment: ''
 };
 
 export default function GameDetails() {
+    const navigate = useNavigate();
     const { gameId } = useParams();
     const [comments, dispatch] = useGetAllComments(gameId);
     const createComment = useCreateComment();
-    const { email } = useAuthContext();
+    const { email, userId } = useAuthContext();
     const [game] = useGetOneGames(gameId);
     const { isAuthenticated } = useAuthContext();
     const {
@@ -29,6 +31,23 @@ export default function GameDetails() {
             console.log(error.message);
         }
     });
+
+    const gameDeleteHandler = async () => {
+        const isConfirmed = confirm(`Are you sure you want to delete ${game.title} game?`);
+        if (!isConfirmed) {
+            return;
+        }
+        
+        try {
+            await gamesAPI.remove(gameId);
+
+            navigate('/');
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
+
+    const isOwner = userId === game._ownerId;
 
     return (
         <section id="game-details">
@@ -58,10 +77,12 @@ export default function GameDetails() {
                 </div>
 
                 {/* <!-- Edit/Delete buttons ( Only for creator of this game )  --> */}
-                {/* <div className="buttons">
-                    <a href="#" className="button">Edit</a>
-                    <a href="#" className="button">Delete</a>
-                </div> */}
+                {isOwner && (
+                    <div className="buttons">
+                        <Link to={`/games/${gameId}/edit`} className="button">Edit</Link>
+                        <a href="#" onClick={gameDeleteHandler} className="button">Delete</a>
+                    </div>
+                )}
             </div>
 
             {/* <!-- Bonus --> */}
